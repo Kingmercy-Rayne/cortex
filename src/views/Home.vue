@@ -1,13 +1,22 @@
 <template>
   <div class="page home">
-    <nav>Navigation</nav>
+    <v-home />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import VHome from '../components/VHome.vue';
 
 export default {
-  name: 'Home',
+  components: {
+    VHome,
+  },
 };
 </script>
+<style lang="stylus" scoped>
+.section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+</style>

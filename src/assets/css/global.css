@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+:root {
+  --bg-color--primary: rgb(31, 31, 34);
+  --bg-color--alt: #111;
+  --text-color--primary: #eee;
+  --text-color--alt: #e9204f;
+  --text-color--tri: #777;
+  --border-color: #e9204f;
+  --border-color--alt: #f2532b;
+  --button-bg-color: transparent;
+  --button-bg-color--alt: #191919;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+li {
+  list-style-type: none;
+}
+body {
+  width: 100%;
+  color: var(--text-color--primary);
+}
+img {
+  width: 100%;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: solid thin var(--border-color);
+  color: #fff;
+  background: var(--button-background-color);
+  font-size: 1.2rem;
+  padding: 0.8em;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  transform: scale(1.05);
+}
