@@ -6,12 +6,12 @@
         <img src="../assets/img/noah-buscher-TEEVw8hzlQ8-unsplash.jpg" alt="hero image" />
       </div>
       <div class="foreward">
-        <h1>We're a Creative agency</h1>
-        <button class="button">Getting Started</button>
+        <h1>Dare to defy expectations</h1>
+        <button class="button">I'm Interested</button>
       </div>
       <ul>
         <li class="brand__card">
-          <i class="fas fa fa-2x fa-reddit"></i>
+          <i class="fas fa fa-2x fa-bar-chart"></i>
           <h4 class="brand__card__title">Future Vision</h4>
           <p class="brand__card__body">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium error esse
@@ -19,16 +19,16 @@
           </p>
         </li>
         <li class="brand__card">
-          <i class="fas fa fa-2x fa-reddit"></i>
-          <h4 class="brand__card__title">Future Vision</h4>
+          <i class="fas fa fa-2x fa-rocket"></i>
+          <h4 class="brand__card__title">Product Design</h4>
           <p class="brand__card__body">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium error esse
             ipsam velit quibusdam.
           </p>
         </li>
         <li class="brand__card">
-          <i class="fas fa fa-2x fa-reddit"></i>
-          <h3 class="brand__card__title">Future Vision</h3>
+          <i class="fas fa fa-2x fa-pie-chart"></i>
+          <h3 class="brand__card__title">Innovative Solutions</h3>
           <p class="brand__card__body">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium error esse
             ipsam velit quibusdam.
@@ -51,8 +51,6 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .v-home {
-  display: flex;
-  flex-direction: column;
   padding: 0 10em;
   padding-top: 1.5em;
   background: var(--bg-color--alt);
@@ -83,21 +81,31 @@ export default {
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 40%;
     top: 3.5em;
     z-index: var(--z-index-value);
 
     h1 {
+      position: relative;
+      padding: 0.5em 0;
       font-size: 2.8rem;
       line-break: 1;
       word-wrap: break-word;
       font-weight: bold;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15%;
+        border: solid thin var(--border-color--primary);
+      }
     }
 
     button {
-      margin-top: 1em;
       align-self: flex-start;
     }
   }
@@ -118,18 +126,31 @@ export default {
       align-items: flex-start;
       width: 28%;
       padding: 2.5em 2em;
-      background: var(--bg-color--primary);
+      background: var(--bg-color--tri);
 
       i {
-        padding-bottom: 2em;
+        padding-bottom: 1.5em;
         color: var(--text-color--alt);
       }
 
       .brand__card__title {
-        border: solid thin cyan;
+        position: relative;
         margin-bottom: 0.5em;
         font-weight: bold;
-        padding: 0.4em 0;
+        padding: 0.5em 0;
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          border: solid thin var(--border-color--primary);
+          width: 2.2em;
+        }
+      }
+
+      .brand__card__body {
+        font-size: 0.8rem;
       }
     }
   }

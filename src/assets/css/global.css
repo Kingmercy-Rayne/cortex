@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 :root {
-  --bg-color--primary: rgb(31, 31, 34);
-  --bg-color--alt: #111;
+  --bg-color--primary: rgb(24, 24, 21);
+  --bg-color--alt: rgb(20, 20, 17);
+  --bg-color--tri: rgb(26, 27, 29);
   --text-color--primary: #eee;
   --text-color--alt: #e9204f;
   --text-color--tri: #777;
-  --border-color: #e9204f;
+  --border-color--primary: #e9204f;
   --border-color--alt: #f2532b;
   --button-bg-color: transparent;
   --button-bg-color--alt: #191919;
@@ -37,11 +38,11 @@ img {
 button {
   cursor: pointer;
   background: none;
-  border: solid thin var(--border-color);
+  border: solid thin var(--border-color--primary);
   color: #fff;
   background: var(--button-background-color);
-  font-size: 1.2rem;
-  padding: 0.8em;
+  font-size: 1rem;
+  padding: 0.8em 1em;
   transition: all 0.2s ease-in-out;
 }
 button:hover {
