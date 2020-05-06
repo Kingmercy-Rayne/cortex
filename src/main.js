@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 
 require('./assets/css/global.css');
+require('./assets/swiper/css/swiper.min.css');
 
 Vue.config.productionTip = false;
 

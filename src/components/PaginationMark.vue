@@ -11,7 +11,8 @@ export default {
 <style lang="stylus" scoped>
 .pagination-mark {
   border: solid thin var(--border-color--primary);
-  height: 1.4em;
+  margin-top: 0.5em;
+  height: 1.5em;
   align-self: center;
 }
 </style>
