@@ -3,6 +3,7 @@
     <v-home />
     <v-services />
     <v-portfolio />
+    <v-about />
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import VHome from '../components/VHome.vue';
 import VServices from '../components/VServices.vue';
 import VPortfolio from '../components/VPortfolio.vue';
+import VAbout from '../components/VAbout.vue';
 
 export default {
   components: {
     VHome,
     VServices,
     VPortfolio,
+    VAbout,
   },
 };
 </script>

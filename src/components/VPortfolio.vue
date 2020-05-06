@@ -129,11 +129,16 @@ export default {
         -ms-flex-align: center;
         -webkit-align-items: center;
         align-items: center;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
+
+        @media screen and (min-width: 800px) {
+          filter: grayscale(60%);
+        }
       }
 
       .swiper-slide:hover {
-        transform: scale(0.9);
+        transform: scale(0.95);
+        filter: grayscale(0);
       }
 
       img {
