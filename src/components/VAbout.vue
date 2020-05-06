@@ -92,6 +92,7 @@ export default {
       display: flex;
       flex-direction: column;
       z-index: 5;
+      transition: all 0.2s ease-in-out;
 
       &:nth-child(1) {
         grid-row: span 2 / auto;
@@ -103,6 +104,12 @@ export default {
         z-index: -5;
         height: 100%;
         object-fit: cover;
+        filter: grayscale(50%);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover img {
+        filter: grayscale(0);
       }
 
       .filter {
@@ -112,15 +119,30 @@ export default {
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.6);
+        filter: grayscale(40%);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover .filter {
+        background: rgba(0, 0, 0, 0.3);
       }
 
       .pictorial__writeup {
         position: absolute;
-        bottom: 2em;
+        bottom: 1em;
         display: flex;
         flex-direction: column;
-        padding: 1em;
-        font-size: 0.8rem;
+        padding: 1em 2em;
+        font-size: 1rem;
+
+        h4 {
+          font-size: 1.1rem;
+          font-weight: bold;
+        }
+        h6{
+            font-weight:lighter;
+            margin 0.5em 0;
+        }
       }
     }
   }

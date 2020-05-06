@@ -6,7 +6,6 @@
       <li>Services</li>
       <li>Works</li>
       <li>About</li>
-      <li>Client</li>
       <li>Contact</li>
     </ul>
     <div class="search">
