@@ -3,7 +3,7 @@
     <the-navbar />
     <div class="brand">
       <div class="hero-img">
-        <img src="../assets/img/noah-buscher-TEEVw8hzlQ8-unsplash.jpg" alt="hero image" />
+        <img src="../assets/img/noah-buscher-TEEVw8hzlQ8-unsplash.png" alt="hero image" />
       </div>
       <div class="foreward">
         <h1>Dare to defy expectations</h1>
