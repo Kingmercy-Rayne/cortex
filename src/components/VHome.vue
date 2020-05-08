@@ -1,9 +1,10 @@
+
 <template>
   <section class="section v-home">
     <the-navbar />
     <div class="brand">
-      <div class="hero-img">
-        <img src="../assets/img/noah-buscher-TEEVw8hzlQ8-unsplash.png" alt="hero image" />
+      <div class="hero-img" id="hero-img">
+        <!-- <img src="../assets/img/noah-buscher-TEEVw8hzlQ8-unsplash.png" alt="hero image" /> -->
       </div>
       <div class="foreward">
         <h1>Dare to defy expectations</h1>
@@ -40,12 +41,31 @@
 </template>
 
 <script>
+import hoverEffect from 'hover-effect';
 import TheNavbar from './TheNavbar.vue';
 
 export default {
   name: 'VHome',
   components: {
     TheNavbar,
+  },
+  data() {
+    return {
+      hoverImg1: '/noah-buscher-TEEVw8hzlQ8-unsplash.png',
+      hoverImg2: '/sam-burriss-8wbxjJBrl3k-unsplash.png',
+      displacementImg: '/filter1.jpg',
+    };
+  },
+  mounted() {
+    //  eslint-disable-next-line
+    var hoverDistort = new hoverEffect({
+      parent: document.getElementById('hero-img'),
+      intensity: 0.3,
+      image1: this.hoverImg1,
+      image2: this.hoverImg2,
+      displacementImage: this.displacementImg,
+      imagesRatio: 1.8,
+    });
   },
 };
 </script>
@@ -66,15 +86,16 @@ export default {
   .hero-img {
     position: absolute;
     right: 0;
-    top: 0.5em;
+    top: 0.05em;
     z-index: -5;
     width: 40%;
     height: 90%;
+    border: solid thin green;
+  }
 
-    img {
-      height: 100%;
-      object-fit: cover;
-    }
+  .hero-img > * {
+    height: 100%;
+    object-fit: cover;
   }
 
   .foreward {

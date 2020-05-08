@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "hover-effect": "^1.1.0",
     "swiper": "^5.3.8",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
@@ -43,18 +44,7 @@
     },
     "rules": {
       "linebreak-style": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*swiper.js",
-          "*swiper.min.js"
-        ],
-        "rules": {
-          "camelcase": "off"
-        }
-      }
-    ]
+    }
   },
   "browserslist": [
     "> 1%",
