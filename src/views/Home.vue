@@ -29,4 +29,8 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
+canvas {
+  height: 10%;
+}
 </style>

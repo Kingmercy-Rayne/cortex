@@ -53,19 +53,30 @@ export default {
     return {
       hoverImg1: '/noah-buscher-TEEVw8hzlQ8-unsplash.png',
       hoverImg2: '/sam-burriss-8wbxjJBrl3k-unsplash.png',
-      displacementImg: '/filter1.jpg',
+      displacementImg: '/filter1.png',
     };
   },
   mounted() {
+    const heroImg = document.getElementById('hero-img');
     //  eslint-disable-next-line
     var hoverDistort = new hoverEffect({
-      parent: document.getElementById('hero-img'),
+      parent: heroImg,
       intensity: 0.3,
       image1: this.hoverImg1,
       image2: this.hoverImg2,
       displacementImage: this.displacementImg,
-      imagesRatio: 1.8,
+      imagesRatio: 1.4,
     });
+
+    // edit dimensions of canvas
+    const heroImgWidth = heroImg.clientWidth;
+    const heroImgHeight = heroImg.clientHeight;
+    const canvas = heroImg.firstElementChild;
+
+    canvas.width = heroImgWidth * 2;
+    canvas.height = heroImgHeight * 2;
+    console.log('hello ');
+    console.log(heroImgWidth);
   },
 };
 </script>
@@ -85,17 +96,13 @@ export default {
 
   .hero-img {
     position: absolute;
-    right: 0;
+    right: 1em;
     top: 0.05em;
     z-index: -5;
-    width: 40%;
-    height: 90%;
-    border: solid thin green;
-  }
-
-  .hero-img > * {
-    height: 100%;
-    object-fit: cover;
+    width: 35%;
+    height: 70%;
+    overflow: hidden !important;
+    object-fit: cover !important;
   }
 
   .foreward {
