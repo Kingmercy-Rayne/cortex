@@ -3,7 +3,11 @@
     <div class="logo"><h1>Cortex.</h1></div>
     <ul class="nav-links">
       <li v-for="item in links" :key="item">
-        <a :href="item.link" v-smooth-scroll>{{ item.name }}</a>
+        <a
+          :href="item.link"
+          v-smooth-scroll="{ duration: 1000, offset: -50, updateHistory: false }"
+          >{{ item.name }}</a
+        >
       </li>
     </ul>
     <div class="search">
