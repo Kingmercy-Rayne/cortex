@@ -5,7 +5,7 @@
       <li v-for="item in links" :key="item">
         <a
           :href="item.link"
-          v-smooth-scroll="{ duration: 1000, offset: -50, updateHistory: false }"
+          v-smooth-scroll="{ duration: 1000, offset: 0, updateHistory: false }"
           >{{ item.name }}</a
         >
       </li>

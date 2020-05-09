@@ -31,6 +31,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
+
+  @media screen and (min-width: 800px) {
+    // cursor: none;
+  }
 
   .page {
     width: 100%;
@@ -48,6 +53,6 @@ export default {
   border: solid 2px var(--border-color--primary);
   border-radius: 50%;
   pointer-events: none;
-  transition: all 0.05s ease-in-out;
+  transition: all 0.02s ease-in;
 }
 </style>

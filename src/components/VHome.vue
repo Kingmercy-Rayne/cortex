@@ -8,34 +8,16 @@
       </div>
       <div class="foreward">
         <h1>Dare to defy expectations</h1>
-        <button class="button">I'm Interested</button>
+        <button class="cta-button">I'm Interested</button>
       </div>
-      <ul>
-        <li class="rellax brand__card" data-rellax-speed="1">
-          <i class="fas fa fa-2x fa-bar-chart"></i>
-          <h4 class="brand__card__title">Future Vision</h4>
-          <p class="brand__card__body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium error esse
-            ipsam velit quibusdam.
-          </p>
-        </li>
-        <li class="rellax brand__card" data-rellax-speed="0">
-          <i class="fas fa fa-2x fa-rocket"></i>
-          <h4 class="brand__card__title">Product Design</h4>
-          <p class="brand__card__body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium error esse
-            ipsam velit quibusdam.
-          </p>
-        </li>
-        <li class="rellax brand__card" data-rellax-speed="-1">
-          <i class="fas fa fa-2x fa-pie-chart"></i>
-          <h3 class="brand__card__title">Innovative Solutions</h3>
-          <p class="brand__card__body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium error esse
-            ipsam velit quibusdam.
-          </p>
-        </li>
-      </ul>
+      <div class="promotion-video">
+        <button class="play-button"><i class="fas fa fa-play"></i></button>
+        <div class="promotion-video__text">
+          <h5>ABOUT US</h5>
+          <hr />
+          <h6>Promotion Video</h6>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -62,7 +44,9 @@ export default {
     //  eslint-disable-next-line
     var hoverDistort = new hoverEffect({
       parent: heroImg,
-      intensity: 0.3,
+      intensity: 0.1,
+      speedIn: 1.0,
+      speedOut: 0.8,
       image1: this.hoverImg1,
       image2: this.hoverImg2,
       displacementImage: this.displacementImg,
@@ -70,11 +54,12 @@ export default {
     });
 
     // edit dimensions of canvas
-    const heroImgWidth = heroImg.clientWidth;
-    const heroImgHeight = heroImg.clientHeight;
-    const canvas = heroImg.firstElementChild;
-    canvas.width = heroImgWidth * 2;
-    canvas.height = heroImgHeight * 2;
+    // Whoops!! didnt work -->> TODO
+    // const heroImgWidth = heroImg.clientWidth;
+    // const heroImgHeight = heroImg.clientHeight;
+    // const canvas = heroImg.firstElementChild;
+    // canvas.width = heroImgWidth * 2;
+    // canvas.height = heroImgHeight * 2;
   },
 };
 </script>
@@ -93,14 +78,16 @@ export default {
   z-index: 1;
 
   .hero-img {
+    --margin-top: 1.5em;
     position: absolute;
     right: 1em;
-    top: 0.05em;
+    top: var(--margin-top);
     z-index: -5;
-    width: 35%;
-    height: 70%;
-    overflow: hidden !important;
-    object-fit: cover !important;
+    width: 55%;
+    height: calc(100% - var(--margin-top));
+    // overflow: hidden !important;
+    // object-fit: cover !important;
+    border: solid thin purple;
   }
 
   .foreward {
@@ -110,13 +97,13 @@ export default {
     justify-content: flex-start;
     align-items: center;
     width: 40%;
-    top: 3.5em;
+    top: 5.5em;
     z-index: var(--z-index-value);
 
     h1 {
       position: relative;
       padding: 0.5em 0;
-      font-size: 2.8rem;
+      font-size: 4rem;
       line-break: 1;
       word-wrap: break-word;
       font-weight: bold;
@@ -131,53 +118,109 @@ export default {
       }
     }
 
-    button {
+    .cta-button {
       align-self: flex-start;
     }
   }
 
-  ul {
+  .promotion-video {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 2em;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    z-index: var(--z-index-value);
+    justify-content: space-around;
+    min-width: 20%;
+    align-items: center;
+    padding: 1.5em 1em;
 
-    .brand__card {
+    // border: solid thin green;
+    .play-button {
+      position: relative;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1em;
+      background: var(--border-color--primary);
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        bottom: -2px;
+        right: -2px;
+        transform: translate(-50%, -50%);
+        height: calc(100% + 2px);
+        width: calc(100% + 2px);
+        border: solid thin white;
+        border-radius: 50%;
+        animation: promotionPlayAnimation1 0.5s infinite alternate;
+        filter: blur(0.3px) opacity(0.5);
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        bottom: -3px;
+        right: -3px;
+        transform: translate(-50%, -50%);
+        transform: scale(1.25);
+        height: calc(100% + 3px);
+        width: calc(100% + 3px);
+        border: solid thin white;
+        border-radius: 50%;
+        animation: promotionPlayAnimation2 0.5s infinite alternate ease-in;
+        filter: blur(1px) opacity(0.3);
+      }
+    }
+
+    .promotion-video__text {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
       align-items: flex-start;
-      width: 28%;
-      padding: 2.5em 2em;
-      background: var(--bg-color--tri);
+      padding: 0.2em 2em;
 
-      i {
-        padding-bottom: 1.5em;
+      & *:not(hr) {
+        padding: 0.3em;
+      }
+
+      hr {
+        width: 130%;
+        height: 1px;
+        opacity: 0.5;
+      }
+
+      h6 {
         color: var(--text-color--alt);
       }
+    }
+  }
 
-      .brand__card__title {
-        position: relative;
-        margin-bottom: 0.5em;
-        font-weight: bold;
-        padding: 0.5em 0;
+  @keyframes promotionPlayAnimation1 {
+    from {
+      transform: scale(1);
+      opacity: 0.5;
+    }
 
-        &:after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          border: solid thin var(--border-color--primary);
-          width: 2.2em;
-        }
-      }
+    to {
+      transform: scale(1.15);
+      opacity: 0.9;
+    }
+  }
 
-      .brand__card__body {
-        font-size: 0.8rem;
-      }
+  @keyframes promotionPlayAnimation2 {
+    from {
+      transform: scale(1.25);
+      opacity: 0.2;
+    }
+
+    to {
+      transform: scale(1.4);
+      opacity: 0.9;
     }
   }
 }
