@@ -49,6 +49,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .nav {
+  padding: 0 10em;
   display: flex;
   justify-content: space-between;
   align-items: center;

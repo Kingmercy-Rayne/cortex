@@ -36,7 +36,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .section {
-  min-height: 92vh;
+  min-height: 95vh;
   width: 100%;
   display: flex;
   flex-direction: column;
