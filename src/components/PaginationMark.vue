@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination-mark"></div>
+  <div class="rellax pagination-mark" data-rellax-speed="0"></div>
 </template>
 
 <script>

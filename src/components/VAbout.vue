@@ -1,5 +1,5 @@
 <template>
-  <section class="section v-services">
+  <section id="about" class="rellax section v-services" data-rellax-speed="0">
     <div class="section__header">
       <h1>About.</h1>
       <!-- <h6>A testament to the value we bring</h6> -->

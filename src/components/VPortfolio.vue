@@ -1,6 +1,6 @@
 <template>
-  <section class="section v-portfolio">
-    <div class="section__header">
+  <section id="portfolio" class="rellax section v-portfolio" data-rellax-speed="0">
+    <div class="rellax section__header" data-rellax-speed="1">
       <span
         ><h1>Portfolio.</h1>
         <h6>We bring the needed spark</h6></span
@@ -8,7 +8,7 @@
       <button class="button">View All</button>
     </div>
     <!-- Swiper -->
-    <div class="swiper-container">
+    <div class="rellax swiper-container" data-rellax-speed="0">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="../assets\img\alex-iby-5cTvUcsrzLU-unsplash.jpg" alt="" />

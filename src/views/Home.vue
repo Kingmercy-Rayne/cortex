@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import Rellax from 'rellax';
 import VHome from '../components/VHome.vue';
 import VServices from '../components/VServices.vue';
 import VPortfolio from '../components/VPortfolio.vue';
@@ -19,6 +20,17 @@ export default {
     VServices,
     VPortfolio,
     VAbout,
+  },
+  mounted() {
+    //  eslint-disable-next-line
+    var rellax = new Rellax('.rellax', {
+      speed: 1,
+      center: false,
+      wrapper: null,
+      round: true,
+      vertical: true,
+      horizontal: false,
+    });
   },
 };
 </script>

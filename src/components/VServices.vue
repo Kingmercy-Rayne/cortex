@@ -1,26 +1,18 @@
 <template>
-  <section class="section v-services">
-    <div class="section__header">
+  <section id="services" class="rellax section v-services"  data-rellax-speed="0">
+    <div class="rellax section__header" data-rellax-speed="0">
       <h1>Services.</h1>
       <h6>WE WORK WITH YOU, NOT FOR YOU</h6>
     </div>
     <ul class="services__container">
-      <li class="service">
-        <span>Digital strategy</span><i class="fas fa fa-long-arrow-right"></i>
-      </li>
-      <li class="service"><span>UX Design</span><i class="fas fa fa-long-arrow-right"></i></li>
-      <li class="service"><span>Content Design</span><i class="fas fa fa-long-arrow-right"></i></li>
-      <li class="service">
-        <span>Content Strategy</span><i class="fas fa fa-long-arrow-right"></i>
-      </li>
-      <li class="service">
-        <span>Design & Concept</span><i class="fas fa fa-long-arrow-right"></i>
-      </li>
-      <li class="service"><span>Social Media</span><i class="fas fa fa-long-arrow-right"></i></li>
-      <li class="service"><span>Media Planning</span><i class="fas fa fa-long-arrow-right"></i></li>
-      <li class="service"><span>Brand Identity</span><i class="fas fa fa-long-arrow-right"></i></li>
-      <li class="service">
-        <span>SEO Optimization</span><i class="fas fa fa-long-arrow-right"></i>
+      <li
+        v-for="item in servicesOffered"
+        :key="item"
+        class=" rellax service"
+        data-rellax-speed="1"
+      >
+        <span>{{ item }}</span
+        ><i class="fas fa fa-long-arrow-right"></i>
       </li>
     </ul>
     <pagination-mark />
@@ -34,6 +26,21 @@ export default {
   name: 'VServices',
   components: {
     PaginationMark,
+  },
+  data() {
+    return {
+      servicesOffered: [
+        'Digital Strategy',
+        'Brand Identity',
+        'Content Design',
+        'Content Strategy',
+        'Design and Concept',
+        'Social Media',
+        'UX Design',
+        'Media Planning',
+        'SEO Integration',
+      ],
+    };
   },
 };
 </script>

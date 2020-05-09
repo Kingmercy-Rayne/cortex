@@ -1,6 +1,6 @@
 
 <template>
-  <section class="section v-home">
+  <section class="rellax section v-home" data-rellax-speed="0">
     <the-navbar />
     <div class="brand">
       <div class="hero-img" id="hero-img">
@@ -11,7 +11,7 @@
         <button class="button">I'm Interested</button>
       </div>
       <ul>
-        <li class="brand__card">
+        <li class="rellax brand__card" data-rellax-speed="1">
           <i class="fas fa fa-2x fa-bar-chart"></i>
           <h4 class="brand__card__title">Future Vision</h4>
           <p class="brand__card__body">
@@ -19,7 +19,7 @@
             ipsam velit quibusdam.
           </p>
         </li>
-        <li class="brand__card">
+        <li class="rellax brand__card" data-rellax-speed="0">
           <i class="fas fa fa-2x fa-rocket"></i>
           <h4 class="brand__card__title">Product Design</h4>
           <p class="brand__card__body">
@@ -27,7 +27,7 @@
             ipsam velit quibusdam.
           </p>
         </li>
-        <li class="brand__card">
+        <li class="rellax brand__card" data-rellax-speed="-1">
           <i class="fas fa fa-2x fa-pie-chart"></i>
           <h3 class="brand__card__title">Innovative Solutions</h3>
           <p class="brand__card__body">
@@ -51,6 +51,7 @@ export default {
   },
   data() {
     return {
+      // use absolute path to PUBLIC folder due to webpack issues.
       hoverImg1: '/noah-buscher-TEEVw8hzlQ8-unsplash.png',
       hoverImg2: '/sam-burriss-8wbxjJBrl3k-unsplash.png',
       displacementImg: '/filter1.png',
@@ -72,11 +73,8 @@ export default {
     const heroImgWidth = heroImg.clientWidth;
     const heroImgHeight = heroImg.clientHeight;
     const canvas = heroImg.firstElementChild;
-
     canvas.width = heroImgWidth * 2;
     canvas.height = heroImgHeight * 2;
-    console.log('hello ');
-    console.log(heroImgWidth);
   },
 };
 </script>
