@@ -6,8 +6,8 @@
       <div class="hero-img" id="hero-img">
         <!-- <img src="../assets/img/noah-buscher-TEEVw8hzlQ8-unsplash.png" alt="hero image" /> -->
       </div>
-      <div class="foreward">
-        <h1>Dare to defy expectations</h1>
+      <div class="foreward__container">
+        <h1 id="foreward">Dare to defy expectations</h1>
         <button class="cta-button">I'm Interested</button>
       </div>
       <div class="promotion-video">
@@ -44,8 +44,8 @@ export default {
     //  eslint-disable-next-line
     var hoverDistort = new hoverEffect({
       parent: heroImg,
-      intensity: 0.1,
-      speedIn: 1.0,
+      intensity: 0.3,
+      speedIn: 0.7,
       speedOut: 0.8,
       image1: this.hoverImg1,
       image2: this.hoverImg2,
@@ -76,8 +76,10 @@ export default {
   flex-grow: 1;
   display: flex;
   z-index: 1;
+  border: solid thin cyan;
 
   .hero-img {
+    border: solid thin brown;
     --margin-top: 1.5em;
     position: absolute;
     right: 1em;
@@ -87,10 +89,10 @@ export default {
     height: calc(100% - var(--margin-top));
     // overflow: hidden !important;
     // object-fit: cover !important;
-    border: solid thin purple;
+    // border: solid thin purple;
   }
 
-  .foreward {
+  .foreward__container {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -102,16 +104,17 @@ export default {
 
     h1 {
       position: relative;
-      padding: 0.5em 0;
+      margin: 0.5em 0;
       font-size: 4rem;
       line-break: 1;
       word-wrap: break-word;
       font-weight: bold;
+      box-decoration-break: clone;
 
       &:before {
         content: '';
         position: absolute;
-        top: 0;
+        top: -10%;
         left: 0;
         width: 15%;
         border: solid thin var(--border-color--primary);

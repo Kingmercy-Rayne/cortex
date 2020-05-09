@@ -13,13 +13,31 @@ export default {
   // },
   mounted() {
     const customCursor = document.getElementById('customCursor');
+    const foreward = document.getElementById('foreward');
+    const heroImg = document.getElementById('hero-img');
 
     function fireCursorEvent(e) {
       customCursor.style.top = `${e.pageY}px`;
       customCursor.style.left = `${e.pageX}px`;
     }
+    function fireForewardTextEvent() {
+      customCursor.classList.add('cursor--grow');
+    }
+    function removeForewardTextEvent() {
+      customCursor.classList.remove('cursor--grow');
+    }
+    function fireHeroImgEvent() {
+      customCursor.classList.add('cursor--hide');
+    }
+    function removeHeroImgEvent() {
+      customCursor.classList.remove('cursor--hide');
+    }
 
     window.addEventListener('mousemove', fireCursorEvent);
+    foreward.addEventListener('mouseover', fireForewardTextEvent);
+    foreward.addEventListener('mouseleave', removeForewardTextEvent);
+    heroImg.addEventListener('mouseover', fireHeroImgEvent);
+    heroImg.addEventListener('mouseleave', removeHeroImgEvent);
   },
 };
 </script>
@@ -46,7 +64,7 @@ export default {
 
 .cursor {
   position: absolute;
-  z-index: 400;
+  z-index: 4000;
   width: 1.5rem;
   height: 1.5rem;
   transform: translate(-50%, -50%);
@@ -54,5 +72,22 @@ export default {
   border-radius: 50%;
   pointer-events: none;
   transition: all 0.02s ease-in;
+}
+
+.cursor--grow {
+  transform: scale(3);
+  background: transparent;
+  border: none;
+  z-index: 20;
+  backdrop-filter: blur(2px);
+}
+
+.cursor--hide {
+  // visibility: hidden;
+  transform: scale(4);
+  background: transparent;
+  border: none;
+  z-index: 20;
+  backdrop-filter: grayscale();
 }
 </style>
