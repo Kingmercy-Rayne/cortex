@@ -43,7 +43,7 @@ export default {
 <style lang="stylus" scoped>
 .v-services {
   background: var(--bg-color--primary);
-  padding: 3em 10em;
+  padding: 8em 10em;
 
   .section__header {
     position: relative;

@@ -5,10 +5,13 @@ q<template>
       <div class="brand">
         <div class="hero-img" id="hero-img"></div>
         <div class="foreward__container">
-          <h1 id="foreward">Dare to defy expectations</h1>
+          <h1 id="foreward">
+            <span>Dare to defy </span><span>expectations<em>.</em></span>
+          </h1>
+          <h5>We create cutting-edge content for your business thanks to an elite team of pros</h5>
           <button class="cta-button">I'm Interested</button>
         </div>
-        <div class="promotion-video">
+        <div class="promotion-video__container">
           <button class="play-button"><i class="fas fa fa-play"></i></button>
           <div class="promotion-video__text">
             <h5>ABOUT US</h5>
@@ -94,13 +97,13 @@ export default {
     // border: solid thin cyan;
     .hero-img {
       // border: solid thin brown;
-      --margin-top: 3.5em;
+      --margin-top: 2.5em;
       position: absolute;
       right: 5em;
       top: var(--margin-top);
       z-index: -5;
       width: 45%;
-      height: calc(96% - var(--margin-top));
+      height: calc(98% - var(--margin-top));
       overflow: hidden !important;
       object-fit: cover !important;
       // border: solid thin purple;
@@ -110,38 +113,52 @@ export default {
       position: absolute;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       width: 40%;
       top: 5.5em;
       left: 8em;
       z-index: var(--z-index-value);
+      color: var(--text-color--primary);
 
+      // border: solid thin green;
       h1 {
         position: relative;
-        margin: 0.5em 0;
         font-size: 4rem;
         line-break: 1;
-        word-wrap: break-word;
-        font-weight: bold;
-        box-decoration-break: clone;
+        font-family: var(--font-family--primary);
+        font-weight: 800;
+        // border: solid thin cyan;
+        line-height: 1.3;
+        letter-spacing: 2px;
 
-        &:before {
-          content: '';
-          position: absolute;
-          top: -10%;
-          left: 0;
-          width: 15%;
-          border: solid thin var(--border-color--primary);
+        span {
+          // border: solid thin pink;
+        }
+
+        em {
+          color: var(--text-color--alt);
+          font-style: normal;
         }
       }
 
+      h5 {
+        font-family: var(--font-family--alt);
+        font-weight: 500;
+        font-size: 1rem;
+        align-self: flex-start;
+        margin: 1.2em 0;
+      }
+
       .cta-button {
+        margin: 1.2em 0;
+        font-family: var(--font-family-alt);
+        font-weight: 400;
         align-self: flex-start;
       }
     }
 
-    .promotion-video {
+    .promotion-video__container {
       position: absolute;
       bottom: 2em;
       display: flex;
@@ -149,6 +166,7 @@ export default {
       min-width: 20%;
       align-items: center;
       padding: 1.5em 1em;
+      font-family: var(--font-family-alt);
 
       // border: solid thin green;
       .play-button {
@@ -158,7 +176,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 1em;
+        padding: 0.8em;
         background: var(--border-color--primary);
 
         &:before {
@@ -174,7 +192,7 @@ export default {
           border: solid thin white;
           border-radius: 50%;
           animation: promotionPlayAnimation1 0.5s infinite alternate;
-          filter: blur(0.3px) opacity(0.5);
+          filter: blur(0.3px) opacity(0.4);
         }
 
         &:after {
@@ -191,7 +209,7 @@ export default {
           border: solid thin white;
           border-radius: 50%;
           animation: promotionPlayAnimation2 0.5s infinite alternate ease-in;
-          filter: blur(1px) opacity(0.3);
+          filter: blur(1px) opacity(0.2);
         }
       }
 
@@ -200,7 +218,7 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        padding: 0.2em 2em;
+        padding: 0.2em 0.5em;
 
         & *:not(hr) {
           padding: 0.3em;
@@ -249,7 +267,7 @@ export default {
     width: 5%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
     padding: 2em 0;
 

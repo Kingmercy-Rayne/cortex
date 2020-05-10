@@ -34,10 +34,6 @@ export default {
           name: 'About',
           path: 'about',
         },
-        {
-          name: 'Contact',
-          link: '#contact',
-        },
       ],
     };
   },
@@ -51,8 +47,10 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-height: 8vh;
   z-index: 100;
 
+  // border: solid thin cyan;
   .logo h1 {
     font-size: 1.4rem;
   }
@@ -64,8 +62,14 @@ export default {
     font-size: 0.8rem;
 
     li {
-      padding: 0.8em;
+      padding: 0.6em 1em;
+      // border: solid thin orange;
       margin: 0 1em;
+      transition: all 0.05s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 

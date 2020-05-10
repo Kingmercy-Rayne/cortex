@@ -59,7 +59,7 @@ export default {
 <style lang="stylus" scoped>
 .v-portfolio {
   background: var(--bg-color--primary);
-  padding: 3em 0;
+  padding: 8em 0;
 
   .section__header {
     position: relative;
