@@ -1,40 +1,32 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import VHome from '../components/VHome.vue';
-import VServices from '../components/VServices.vue';
-import VPortfolio from '../components/VPortfolio.vue';
-import VAbout from '../components/VAbout.vue';
+import Services from '../views/Services.vue';
+import Portfolio from '../views/Portfolio.vue';
+import About from '../views/About.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: '/',
     component: Home,
-    children: [
-      {
-        path: '/home',
-        name: 'Home',
-        component: VHome,
-      },
-      {
-        path: '/services',
-        name: 'Services',
-        component: VServices,
-      },
-      {
-        path: '/portfolio',
-        name: 'Portfolio',
-        component: VPortfolio,
-      },
-      {
-        path: '/about',
-        name: 'About',
-        component: VAbout,
-      },
-    ],
+  },
+  {
+    path: '/services',
+    name: 'Services',
+    component: Services,
+  },
+  {
+    path: '/portfolio',
+    name: 'Portfolio',
+    component: Portfolio,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
   },
 ];
 

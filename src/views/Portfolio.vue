@@ -1,6 +1,6 @@
 <template>
-  <section id="portfolio" class="rellax section v-portfolio" data-rellax-speed="0">
-    <div class="rellax section__header" data-rellax-speed="1">
+  <section id="portfolio" class="page v-portfolio">
+    <div class="section__header">
       <span
         ><h1>Portfolio.</h1>
         <h6>We bring the needed spark</h6></span
@@ -8,7 +8,7 @@
       <button class="button">View All</button>
     </div>
     <!-- Swiper -->
-    <div class="rellax swiper-container" data-rellax-speed="0">
+    <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="../assets\img\alex-iby-5cTvUcsrzLU-unsplash.jpg" alt="" />
@@ -35,10 +35,10 @@
 <script>
 import Swiper from 'swiper';
 import '../assets/swiper/css/swiper.min.css';
-import PaginationMark from './PaginationMark.vue';
+import PaginationMark from '../components/PaginationMark.vue';
 
 export default {
-  name: 'VServices',
+  name: 'Portfolio',
   components: {
     PaginationMark,
   },

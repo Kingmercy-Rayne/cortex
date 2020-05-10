@@ -1,16 +1,11 @@
 <template>
-  <section id="services" class="rellax section v-services"  data-rellax-speed="0">
-    <div class="rellax section__header" data-rellax-speed="0">
+  <section id="services" class="page v-services">
+    <div class="section__header">
       <h1>Services.</h1>
       <h6>WE WORK WITH YOU, NOT FOR YOU</h6>
     </div>
     <ul class="services__container">
-      <li
-        v-for="item in servicesOffered"
-        :key="item"
-        class=" rellax service"
-        data-rellax-speed="1"
-      >
+      <li v-for="item in servicesOffered" :key="item" class="service">
         <span>{{ item }}</span
         ><i class="fas fa fa-long-arrow-right"></i>
       </li>
@@ -20,10 +15,10 @@
 </template>
 
 <script>
-import PaginationMark from './PaginationMark.vue';
+import PaginationMark from '../components/PaginationMark.vue';
 
 export default {
-  name: 'VServices',
+  name: 'Services',
   components: {
     PaginationMark,
   },

@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div class="cursor" id="customCursor"></div>
+    <the-navbar />
     <router-view />
   </div>
 </template>
 <script>
+import TheNavbar from './components/TheNavbar.vue';
+
 export default {
   // data() {
   //   return {
@@ -39,8 +42,12 @@ export default {
     heroImg.addEventListener('mouseover', fireHeroImgEvent);
     heroImg.addEventListener('mouseleave', removeHeroImgEvent);
   },
+  components: {
+    TheNavbar,
+  },
 };
 </script>
+
 <style lang="stylus">
 #app {
   position: relative;
@@ -59,6 +66,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
 }
 
