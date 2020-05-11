@@ -3,9 +3,9 @@ q<template>
   <section class="page v-home">
     <div class="brand__wrapper">
       <div class="brand">
-        <div class="hero-img" id="hero-img"></div>
-        <div class="foreward__container">
-          <h1 id="foreward">
+        <div class="hero-img" id="hero-img" ref="heroImg"></div>
+        <div class="foreword__container">
+          <h1 id="foreword">
             <span>Dare to defy </span><span>expectations<em>.</em></span>
           </h1>
           <h5>We create cutting-edge content for your business thanks to an elite team of pros</h5>
@@ -48,14 +48,15 @@ export default {
       displacementImg: '/filter1.png',
     };
   },
+
   mounted() {
     const heroImg = document.getElementById('hero-img');
     //  eslint-disable-next-line
     var hoverDistort = new hoverEffect({
       parent: heroImg,
       intensity: 0.3,
-      speedIn: 0.7,
-      speedOut: 0.8,
+      speedIn: 0.2,
+      speedOut: 0.2,
       image1: this.hoverImg1,
       image2: this.hoverImg2,
       displacementImage: this.displacementImg,
@@ -72,6 +73,7 @@ export default {
   },
 };
 </script>
+
 <style lang="stylus" scoped>
 .v-home {
   padding-top: 1.5em;
@@ -109,7 +111,7 @@ export default {
       // border: solid thin purple;
     }
 
-    .foreward__container {
+    .foreword__container {
       position: absolute;
       display: flex;
       flex-direction: column;
@@ -139,6 +141,7 @@ export default {
         em {
           color: var(--text-color--alt);
           font-style: normal;
+          padding: 0 0.05em;
         }
       }
 
@@ -295,10 +298,11 @@ export default {
     }
 
     p {
+      font-family: var(--font-family--alt);
       font-size: 0.7em;
       padding: 1em 0;
       writing-mode: vertical-rl;
-      letter-spacing: 0.4rem;
+      letter-spacing: 0.5rem;
       opacity: var(--sidepane-opacity);
     }
   }

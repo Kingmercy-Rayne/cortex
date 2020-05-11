@@ -2,7 +2,7 @@
   <nav class="nav">
     <div class="logo"><h1>Cortex.</h1></div>
     <ul class="nav-links">
-      <li v-for="item in links" :key="item">
+      <li v-for="(item, index) in links" :key="index">
         <router-link :to="item.path">{{ item.name }}</router-link>
       </li>
     </ul>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="cursor" id="customCursor"></div>
+    <div class="cursor" id="customCursor" ref="customCursor"></div>
     <the-navbar />
     <router-view />
   </div>
@@ -9,24 +9,22 @@
 import TheNavbar from './components/TheNavbar.vue';
 
 export default {
-  // data() {
-  //   return {
-  //     cursor: this.$refs.cursor,
-  //   };
-  // },
+  components: {
+    TheNavbar,
+  },
+
   mounted() {
     const customCursor = document.getElementById('customCursor');
-    const foreward = document.getElementById('foreward');
+    const foreword = document.getElementById('foreword');
     const heroImg = document.getElementById('hero-img');
-
     function fireCursorEvent(e) {
       customCursor.style.top = `${e.pageY}px`;
       customCursor.style.left = `${e.pageX}px`;
     }
-    function fireForewardTextEvent() {
+    function fireForewordTextEvent() {
       customCursor.classList.add('cursor--grow');
     }
-    function removeForewardTextEvent() {
+    function removeForewordTextEvent() {
       customCursor.classList.remove('cursor--grow');
     }
     function fireHeroImgEvent() {
@@ -35,15 +33,11 @@ export default {
     function removeHeroImgEvent() {
       customCursor.classList.remove('cursor--hide');
     }
-
     window.addEventListener('mousemove', fireCursorEvent);
-    foreward.addEventListener('mouseover', fireForewardTextEvent);
-    foreward.addEventListener('mouseleave', removeForewardTextEvent);
+    foreword.addEventListener('mouseover', fireForewordTextEvent);
+    foreword.addEventListener('mouseleave', removeForewordTextEvent);
     heroImg.addEventListener('mouseover', fireHeroImgEvent);
     heroImg.addEventListener('mouseleave', removeHeroImgEvent);
-  },
-  components: {
-    TheNavbar,
   },
 };
 </script>
