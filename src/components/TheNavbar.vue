@@ -57,7 +57,7 @@ export default {
   width: 100%;
   min-height: 8vh;
   z-index: 100;
-  border: solid thin cyan;
+  // border: solid thin cyan;
 
   @media screen and (max-width: 800px) {
     padding: 0.2em;
@@ -66,6 +66,7 @@ export default {
   .logo h1 {
     font-size: 1.4rem;
     margin-right: auto;
+    padding: 0 1em;
   }
 
   .nav-links {
@@ -80,7 +81,6 @@ export default {
 
     li {
       padding: 0.6em 1em;
-      border: solid thin orange;
       margin: 0 1em;
       transition: all 0.05s ease-in-out;
 
@@ -96,7 +96,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin-left: auto;
-    cursor pointer;
+    cursor: pointer;
 
     .hamburger {
       position: relative;
@@ -114,6 +114,10 @@ export default {
     .hamburger, .hamburger::before {
       height: 0.2rem;
       width: 1.4rem;
+    }
+
+    @media screen and (min-width: 800px) {
+      display: none;
     }
   }
 

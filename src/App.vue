@@ -70,6 +70,10 @@ export default {
   border-radius: 50%;
   pointer-events: none;
   transition: transform, border 0.1ms ease-in;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 }
 
 .cursor--grow {

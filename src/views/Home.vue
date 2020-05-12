@@ -174,6 +174,17 @@ export default {
       overflow: hidden !important;
       object-fit: cover !important;
       // border: solid thin purple;
+
+      @media screen and (max-width: 1000px) {
+        width: 85%;
+        right: 1em;
+        filter: brightness(60%);
+      }
+
+      @media screen and (max-width: 800px) {
+        width: 98%;
+        right: 1px;
+      }
     }
 
     .foreword__container {
@@ -188,6 +199,21 @@ export default {
       z-index: var(--z-index-value);
       color: var(--text-color--primary);
 
+      @media screen and (max-width: 1100px) {
+        top: 7em;
+        width: 80%;
+      }
+
+      @media screen and (max-width: 800px) {
+        width: 90%;
+        left: 1.5em;
+      }
+      @media screen and (max-width: 450px) {
+        top: 7em;
+        width: 90%;
+        left: 1.5em;
+      }
+
       // border: solid thin green;
       h1 {
         position: relative;
@@ -198,6 +224,20 @@ export default {
         // border: solid thin cyan;
         line-height: 1.3;
         letter-spacing: 2px;
+
+        @media screen and (max-width: 1000px) {
+          font-size: 4.5rem;
+        }
+
+        @media screen and (max-width: 800px) {
+          font-size: 3.2rem;
+          letter-spacing:0.6rem;
+          word-break:1rem;
+        }
+        @media screen and (max-width: 450px) {
+          letter-spacing:1px;
+          font-size: 2.6rem;
+        }
 
         span {
           // border: solid thin pink;
@@ -330,7 +370,7 @@ export default {
   }
 
   .sidepane {
-    border: solid thin yellow;
+    // border: solid thin yellow;
     --sidepane-opacity: 0.5;
     width: 5%;
     display: flex;
@@ -338,6 +378,10 @@ export default {
     justify-content: flex-end;
     align-items: center;
     padding: 2em 0.2em;
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
 
     // opacity: 0.5;
     .sidepane__social-links {
