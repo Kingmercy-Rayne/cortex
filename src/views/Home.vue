@@ -68,17 +68,17 @@ export default {
   mounted() {
     // use a query selector rather than a $ref due to lag issues
     const heroImg = document.getElementById('hero-img');
-    const customCursor = document.getElementById('customCursor');
     const foreword = document.getElementById('foreword');
     // dynamically set window dimensions on resize
     this.$nextTick(() => {
+      // track screen resize
       window.addEventListener('resize', this.screenResizeEvent);
       // disable eslint for hoverEffect init
       //  eslint-disable-next-line
       var hoverDistort = new hoverEffect({
         parent: heroImg,
         intensity: 0.3,
-        speedIn: 0.2,
+        speedIn: 0.1,
         speedOut: 0.2,
         image1: this.hoverImg1,
         image2: this.hoverImg2,
@@ -88,22 +88,10 @@ export default {
       });
 
       // MouseOver Effects
-      //  eslint-disable-next-line
-      foreword.addEventListener('mouseover', function fireForewordTextEvent() {
-        customCursor.classList.add('cursor--grow');
-      });
-      //  eslint-disable-next-line
-      foreword.addEventListener('mouseleave', function removeForewordTextEvent() {
-        customCursor.classList.remove('cursor--grow');
-      });
-      //  eslint-disable-next-line
-      heroImg.addEventListener('mouseover', function fireHeroImgEvent() {
-        customCursor.classList.add('cursor--hide');
-      });
-      //  eslint-disable-next-line
-      heroImg.addEventListener('mouseleave', function removeHeroImgEvent() {
-        customCursor.classList.remove('cursor--hide');
-      });
+      foreword.addEventListener('mouseover', this.fireForewordTextEvent);
+      foreword.addEventListener('mouseleave', this.removeForewordTextEvent);
+      heroImg.addEventListener('mouseover', this.fireHeroImgEvent);
+      heroImg.addEventListener('mouseleave', this.removeHeroImgEvent);
     });
 
     // edit dimensions of canvas
@@ -122,19 +110,32 @@ export default {
       console.log('width is', this.windowWidth);
       console.log('height is', this.windowHeight);
     },
+    fireForewordTextEvent() {
+      const customCursor = document.getElementById('customCursor');
+      customCursor.classList.add('cursor--grow');
+    },
+    removeForewordTextEvent() {
+      const customCursor = document.getElementById('customCursor');
+      customCursor.classList.remove('cursor--grow');
+    },
+    fireHeroImgEvent() {
+      const customCursor = document.getElementById('customCursor');
+      customCursor.classList.add('cursor--hide');
+    },
+    removeHeroImgEvent() {
+      const customCursor = document.getElementById('customCursor');
+      customCursor.classList.remove('cursor--hide');
+    },
   },
   beforeDestroy() {
     const foreword = document.getElementById('foreword');
     const heroImg = document.getElementById('hero-img');
+
     window.removeEventListener('resize', this.screenResizeEvent);
-    //  eslint-disable-next-line
-    foreword.removeEventListener('mouseover', fireForewordTextEvent);
-    //  eslint-disable-next-line
-    foreword.removeEventListener('mouseleave', removeForewordTextEvent);
-    //  eslint-disable-next-line
-    heroImg.removeEventListener('mouseover', fireHeroImgEvent);
-    //  eslint-disable-next-line
-    heroImg.removeEventListener('mouseleave', removeHeroImgEvent);
+    foreword.removeEventListener('mouseover', this.fireForewordTextEvent);
+    foreword.removeEventListener('mouseleave', this.removeForewordTextEvent);
+    heroImg.removeEventListener('mouseover', this.fireHeroImgEvent);
+    heroImg.removeEventListener('mouseleave', this.removeHeroImgEvent);
   },
 };
 </script>
@@ -143,7 +144,6 @@ export default {
 .v-home {
   padding-top: 1.5em;
   background: var(--bg-color--alt);
-  min-height: 100vh !important;
 }
 
 .brand__wrapper {
@@ -259,8 +259,8 @@ export default {
           width: calc(100% + 2px);
           border: solid thin white;
           border-radius: 50%;
-          animation: promotionPlayAnimation1 0.5s infinite alternate;
-          filter: blur(0.3px) opacity(0.4);
+          animation: promotionPlayAnimation1 0.6s infinite alternate ease-in;
+          filter: blur(0.5px) opacity(0.5);
         }
 
         &:after {
@@ -276,8 +276,8 @@ export default {
           width: calc(100% + 3px);
           border: solid thin white;
           border-radius: 50%;
-          animation: promotionPlayAnimation2 0.5s infinite alternate ease-in;
-          filter: blur(1px) opacity(0.2);
+          animation: promotionPlayAnimation2 0.6s infinite alternate ease-out;
+          filter: blur(1.2px) opacity(0.4);
         }
       }
 
@@ -324,20 +324,20 @@ export default {
 
       to {
         transform: scale(1.4);
-        opacity: 0.9;
+        opacity: 1;
       }
     }
   }
 
   .sidepane {
-    // border: solid thin yellow;
+    border: solid thin yellow;
     --sidepane-opacity: 0.5;
     width: 5%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding: 2em 0;
+    padding: 2em 0.2em;
 
     // opacity: 0.5;
     .sidepane__social-links {
@@ -349,10 +349,16 @@ export default {
       padding: 0.2em;
 
       i {
-        padding: 1em 0.2em;
+        padding: 1em 0.4em;
         color: var(--text-color--primary);
-        font-size: 1.2rem;
+        font-size: 1rem;
         opacity: var(--sidepane-opacity);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+          transform: scale(1.1);
+        }
       }
     }
 

@@ -32,7 +32,8 @@ a {
 li {
   list-style-type: none;
 }
-body {
+body,
+html {
   width: 100%;
   color: var(--text-color--primary);
   font-family: 'Montserrat', 'Catamaran', Avenir, Helvetica, Arial, sans-serif;

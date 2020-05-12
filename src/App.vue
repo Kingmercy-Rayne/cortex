@@ -22,6 +22,10 @@ export default {
         customCursor.style.top = `${e.pageY}px`;
         customCursor.style.left = `${e.pageX}px`;
       });
+
+      // change VH
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
   },
   beforeDestroy() {
@@ -37,8 +41,9 @@ export default {
   font-family: 'Montserrat', 'Catamaran', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   overflow-x: hidden;
 
   @media screen and (min-width: 800px) {
@@ -55,6 +60,8 @@ export default {
 
 .cursor {
   position: absolute;
+  // throw it outta the viewport
+  top: -5%;
   z-index: 4000;
   width: 1.5rem;
   height: 1.5rem;
@@ -62,7 +69,7 @@ export default {
   border: solid 2px var(--border-color--primary);
   border-radius: 50%;
   pointer-events: none;
-  transition: all 0.02s ease-in;
+  transition: transform, border 0.1ms ease-in;
 }
 
 .cursor--grow {

@@ -8,7 +8,7 @@
       <button class="button">View All</button>
     </div>
     <!-- Swiper -->
-    <div class="swiper-container">
+    <div class="swiper-container" ref="swiperContainer">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="../assets/img/alex-iby-5cTvUcsrzLU-unsplash.jpg" alt="" />
@@ -43,15 +43,20 @@ export default {
     PaginationMark,
   },
   mounted() {
-    const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 3,
-      spaceBetween: 25,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+    this.$nextTick(() => {
+      const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 25,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      swiper.init();
     });
-    swiper();
+  },
+  beforeDestroy() {
+    this.$refs.swiperContainer.swiper.destroy();
   },
 };
 </script>
