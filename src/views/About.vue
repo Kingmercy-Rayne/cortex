@@ -7,7 +7,7 @@
     </div>
     <ul class="pictorial">
       <li class="pictorial__item">
-        <img src="../assets\img\austin-distel-mpN7xjKQ_Ns-unsplash.jpg" alt="" />
+        <img src="../assets/img/austin-distel-mpN7xjKQ_Ns-unsplash.jpg" alt="" />
         <div class="filter"></div>
         <div class="pictorial__writeup">
           <h4>Teamwork</h4>
@@ -15,7 +15,7 @@
         </div>
       </li>
       <li class="pictorial__item">
-        <img src="../assets\img\austin-distel-wD1LRb9OeEo-unsplash.jpg" alt="" />
+        <img src="../assets/img/austin-distel-wD1LRb9OeEo-unsplash.jpg" alt="" />
         <div class="filter"></div>
         <div class="pictorial__writeup">
           <h4>Philosophy</h4>
@@ -23,7 +23,7 @@
         </div>
       </li>
       <li class="pictorial__item">
-        <img src="../assets\img\austin-distel-wawEfYdpkag-unsplash.jpg" alt="" />
+        <img src="../assets/img/austin-distel-wawEfYdpkag-unsplash.jpg" alt="" />
         <div class="filter"></div>
         <div class="pictorial__writeup">
           <h4>Office</h4>

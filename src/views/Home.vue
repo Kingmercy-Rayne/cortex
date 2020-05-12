@@ -42,25 +42,51 @@ export default {
   name: 'Home',
   data() {
     return {
+      windowHeight: 0,
+      windowWidth: 0,
       // use absolute path to PUBLIC folder due to webpack issues.
       hoverImg1: '/sam-burriss-8wbxjJBrl3k-unsplash.png',
       hoverImg2: '/noah-buscher-TEEVw8hzlQ8-unsplash.png',
       displacementImg: '/filter1.png',
     };
   },
-
+  computed: {
+    isNotMobileScreen() {
+      return (this.windowWidth <= 768);
+    },
+    getHoverImageRatio() {
+      let ratio = 0;
+      if (this.windowWidth > 768) {
+        ratio = 1.4;
+      } else {
+        ratio = 1;
+      }
+      return ratio;
+    },
+  },
   mounted() {
+    // use a query selector rather than a $ref due to lag issues
     const heroImg = document.getElementById('hero-img');
-    //  eslint-disable-next-line
-    var hoverDistort = new hoverEffect({
-      parent: heroImg,
-      intensity: 0.3,
-      speedIn: 0.2,
-      speedOut: 0.2,
-      image1: this.hoverImg1,
-      image2: this.hoverImg2,
-      displacementImage: this.displacementImg,
-      imagesRatio: 1.4,
+    // dynamically set window dimensions on resize
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.windowHeight = window.innerHeight;
+        this.windowWidth = window.innerWidth;
+        console.log(this.getHoverImageRatio);
+      });
+      // disable eslint for hoverEffect init
+      //  eslint-disable-next-line
+      var hoverDistort = new hoverEffect({
+        parent: heroImg,
+        intensity: 0.3,
+        speedIn: 0.2,
+        speedOut: 0.2,
+        image1: this.hoverImg1,
+        image2: this.hoverImg2,
+        displacementImage: this.displacementImg,
+        imagesRatio: this.getHoverImageRatio,
+        hover: this.isNotMobileScreen,
+      });
     });
 
     // edit dimensions of canvas

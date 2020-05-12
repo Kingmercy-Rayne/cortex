@@ -11,7 +11,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="../assets\img\alex-iby-5cTvUcsrzLU-unsplash.jpg" alt="" />
+          <img src="../assets/img/alex-iby-5cTvUcsrzLU-unsplash.jpg" alt="" />
         </div>
         <div class="swiper-slide">
           <img src="../assets/img/noah-buscher-jm0npM4Gyic-unsplash.jpg" alt="" />
