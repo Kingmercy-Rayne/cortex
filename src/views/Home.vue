@@ -52,11 +52,12 @@ export default {
   },
   computed: {
     isNotMobileScreen() {
-      return (this.windowWidth <= 768);
+      return this.windowWidth <= 768;
     },
     getHoverImageRatio() {
+      // for some reason, the equality signs have to be inverted
       let ratio = 0;
-      if (this.windowWidth > 768) {
+      if (this.windowWidth <= 768) {
         ratio = 1.4;
       } else {
         ratio = 1;
@@ -69,11 +70,7 @@ export default {
     const heroImg = document.getElementById('hero-img');
     // dynamically set window dimensions on resize
     this.$nextTick(() => {
-      window.addEventListener('resize', () => {
-        this.windowHeight = window.innerHeight;
-        this.windowWidth = window.innerWidth;
-        console.log(this.getHoverImageRatio);
-      });
+      window.addEventListener('resize', this.screenResizeEvent);
       // disable eslint for hoverEffect init
       //  eslint-disable-next-line
       var hoverDistort = new hoverEffect({
@@ -96,6 +93,18 @@ export default {
     // const canvas = heroImg.firstElementChild;
     // canvas.width = heroImgWidth * 2;
     // canvas.height = heroImgHeight * 2;
+  },
+  methods: {
+    screenResizeEvent() {
+      this.windowHeight = window.innerHeight;
+      this.windowWidth = window.innerWidth;
+      console.log('current ratio is', this.getHoverImageRatio);
+      console.log('width is', this.windowWidth);
+      console.log('height is', this.windowHeight);
+    },
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.screenResizeEvent);
   },
 };
 </script>

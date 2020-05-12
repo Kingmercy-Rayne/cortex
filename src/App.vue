@@ -14,30 +14,47 @@ export default {
   },
 
   mounted() {
-    const customCursor = document.getElementById('customCursor');
+    this.$nextTick(() => {
+      const customCursor = document.getElementById('customCursor');
+      const foreword = document.getElementById('foreword');
+      const heroImg = document.getElementById('hero-img');
+
+      //  eslint-disable-next-line
+      window.addEventListener('mousemove', function fireCursorEvent(e) {
+        customCursor.style.top = `${e.pageY}px`;
+        customCursor.style.left = `${e.pageX}px`;
+      });
+      //  eslint-disable-next-line
+      foreword.addEventListener('mouseover', function fireForewordTextEvent() {
+        customCursor.classList.add('cursor--grow');
+      });
+      //  eslint-disable-next-line
+      foreword.addEventListener('mouseleave', function removeForewordTextEvent() {
+        customCursor.classList.remove('cursor--grow');
+      });
+      //  eslint-disable-next-line
+      heroImg.addEventListener('mouseover', function fireHeroImgEvent() {
+        customCursor.classList.add('cursor--hide');
+      });
+      //  eslint-disable-next-line
+      heroImg.addEventListener('mouseleave', function removeHeroImgEvent() {
+        customCursor.classList.remove('cursor--hide');
+      });
+    });
+  },
+  beforeDestroy() {
     const foreword = document.getElementById('foreword');
     const heroImg = document.getElementById('hero-img');
-    function fireCursorEvent(e) {
-      customCursor.style.top = `${e.pageY}px`;
-      customCursor.style.left = `${e.pageX}px`;
-    }
-    function fireForewordTextEvent() {
-      customCursor.classList.add('cursor--grow');
-    }
-    function removeForewordTextEvent() {
-      customCursor.classList.remove('cursor--grow');
-    }
-    function fireHeroImgEvent() {
-      customCursor.classList.add('cursor--hide');
-    }
-    function removeHeroImgEvent() {
-      customCursor.classList.remove('cursor--hide');
-    }
-    window.addEventListener('mousemove', fireCursorEvent);
-    foreword.addEventListener('mouseover', fireForewordTextEvent);
-    foreword.addEventListener('mouseleave', removeForewordTextEvent);
-    heroImg.addEventListener('mouseover', fireHeroImgEvent);
-    heroImg.addEventListener('mouseleave', removeHeroImgEvent);
+    //  eslint-disable-next-line
+    window.removeEventListener('mousemove', fireCursorEvent);
+    //  eslint-disable-next-line
+    foreword.removeEventListener('mouseover', fireForewordTextEvent);
+    //  eslint-disable-next-line
+    foreword.removeEventListener('mouseleave', removeForewordTextEvent);
+    //  eslint-disable-next-line
+    heroImg.removeEventListener('mouseover', fireHeroImgEvent);
+    //  eslint-disable-next-line
+    heroImg.removeEventListener('mouseleave', removeHeroImgEvent);
   },
 };
 </script>
