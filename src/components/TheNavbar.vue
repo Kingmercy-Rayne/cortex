@@ -1,6 +1,8 @@
 <template>
   <nav class="nav">
-    <div class="logo"><h1>Cortex.</h1></div>
+    <div class="logo">
+      <router-link :to="'/'"> <h1>Cortex.</h1></router-link>
+    </div>
     <ul class="nav-links" v-if="!isNotMobileScreen">
       <li v-for="(item, index) in links" :key="index">
         <router-link :to="item.path">{{ item.name }}</router-link>
@@ -47,11 +49,7 @@ export default {
       isSidepaneNavOpen: false,
       links: [
         {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Services',
+          name: 'About',
           path: 'services',
         },
         {
@@ -59,7 +57,7 @@ export default {
           path: 'portfolio',
         },
         {
-          name: 'About',
+          name: 'Contact',
           path: 'about',
         },
       ],
@@ -160,10 +158,6 @@ export default {
     }
   }
 
-  .sidepane__nav--hidden {
-    display: none;
-  }
-
   .sidepane__nav {
     // TODO: separate into component later
     position: absolute;
@@ -176,9 +170,10 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 1em;
+    padding: 0.5em;
     background: rgba(237, 237, 237, 0.99);
     filter: brightness(85%);
+    transition: all 2s ease-in-out;
     // border: solid thin purple;
     color: black;
 
@@ -190,7 +185,7 @@ export default {
       cursor: pointer;
 
       .hamburger__text {
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-weight: 500;
       }
 
@@ -226,7 +221,7 @@ export default {
       width: 100%;
       font-family: var(--font-family--primary);
       font-weight: 700;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
 
       li {
         padding: 1.4em 1em;
