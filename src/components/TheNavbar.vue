@@ -1,21 +1,21 @@
 <template>
   <nav class="nav">
     <div class="logo"><h1>Cortex.</h1></div>
-    <ul class="nav-links">
+    <ul class="nav-links" v-if="!isNotMobileScreen">
       <li v-for="(item, index) in links" :key="index">
         <router-link :to="item.path">{{ item.name }}</router-link>
       </li>
     </ul>
 
-    <div class="search">
+    <div class="search" v-if="!isNotMobileScreen">
       <i class="fas fa fa-search"></i>
     </div>
-    <div class="nav-toggle">
+    <div v-if="!isNotMobileScreen" class="nav-toggle" @click="this.toggleSideNav">
       <span class="hamburger"></span>
     </div>
     <!-- sidepane -->
-    <div class="sidepane__nav">
-      <div class="sidepane__nav--toggle">
+    <div :class="'sidepane__nav'" v-if="isSidepaneNavOpen">
+      <div class="sidepane__nav--toggle" @click="this.toggleSideNav">
         <span class="hamburger"></span>
         <span class="hamburger__text">Close</span>
       </div>
@@ -44,7 +44,7 @@ export default {
   name: 'TheNavbar',
   data() {
     return {
-      isMobileView: false,
+      isSidepaneNavOpen: false,
       links: [
         {
           name: 'Home',
@@ -64,6 +64,16 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    isNotMobileScreen() {
+      return this.windowWidth <= 768;
+    },
+  },
+  methods: {
+    toggleSideNav() {
+      this.isSidepaneNavOpen = !this.isSidepaneNavOpen;
+    },
   },
 };
 </script>
@@ -150,6 +160,10 @@ export default {
     }
   }
 
+  .sidepane__nav--hidden {
+    display: none;
+  }
+
   .sidepane__nav {
     // TODO: separate into component later
     position: absolute;
@@ -157,20 +171,16 @@ export default {
     left: 0;
     bottom: 1px;
     min-height: calc(100vh - 2px);
-    width: 95%;
+    width: 99%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 1em;
     background: rgba(237, 237, 237, 0.99);
-    filter: brightness(70%);
+    filter: brightness(85%);
     // border: solid thin purple;
     color: black;
-
-    & * {
-      color: black;
-    }
 
     .sidepane__nav--toggle {
       display: flex;
@@ -201,7 +211,7 @@ export default {
       .hamburger, .hamburger::before {
         height: 0.12rem;
         width: 1.5rem;
-        background: black;
+        background: crimson;
       }
     }
 
@@ -236,7 +246,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 1em;
+    margin: 1em 0;
 
     .social-links {
       padding: 0.2em;
