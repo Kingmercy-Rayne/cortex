@@ -13,6 +13,29 @@
     <div class="nav-toggle">
       <span class="hamburger"></span>
     </div>
+    <!-- sidepane -->
+    <div class="sidepane__nav">
+      <div class="sidepane__nav--toggle">
+        <span class="hamburger"></span>
+        <span class="hamburger__text">Close</span>
+      </div>
+      <ul class="nav-links">
+        <li v-for="(item, index) in links" :key="index">
+          <router-link :to="item.path">{{ item.name }}</router-link>
+        </li>
+      </ul>
+      <div class="sidepane__nav__social">
+        <div class="social-links">
+          <i class="fas fa fa-instagram"></i>
+          <i class="fas fa fa-behance"></i>
+          <i class="fas fa fa-dribbble"></i>
+          <i class="fas fa fa-twitter"></i>
+        </div>
+        <span></span>
+        <p>Creative Agency</p>
+      </div>
+    </div>
+    <!-- End of sidepane -->
   </nav>
 </template>
 
@@ -21,6 +44,7 @@ export default {
   name: 'TheNavbar',
   data() {
     return {
+      isMobileView: false,
       links: [
         {
           name: 'Home',
@@ -44,10 +68,9 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-@media screen and (max-width: 800px) {
-  overflow: hidden;
-}
+// shared nav toggle
 
+// rest  of nav
 .nav {
   position: fixed;
   padding: 1.5em 8em;
@@ -57,8 +80,8 @@ export default {
   width: 100%;
   min-height: 8vh;
   z-index: 100;
-  // border: solid thin cyan;
 
+  // border: solid thin cyan;
   @media screen and (max-width: 800px) {
     padding: 0.2em;
   }
@@ -112,7 +135,7 @@ export default {
     }
 
     .hamburger, .hamburger::before {
-      height: 0.2rem;
+      height: 0.1rem;
       width: 1.4rem;
     }
 
@@ -124,6 +147,123 @@ export default {
   .search {
     @media screen and (max-width: 800px) {
       display: none;
+    }
+  }
+
+  .sidepane__nav {
+    // TODO: separate into component later
+    position: absolute;
+    top: 1px;
+    left: 0;
+    bottom: 1px;
+    min-height: calc(100vh - 2px);
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em;
+    background: rgba(237, 237, 237, 0.99);
+    filter: brightness(70%);
+    // border: solid thin purple;
+    color: black;
+
+    & * {
+      color: black;
+    }
+
+    .sidepane__nav--toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+      cursor: pointer;
+
+      .hamburger__text {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .hamburger {
+        margin: 0 1.5em;
+        position: relative;
+        display: block;
+        transform: translateY(0) rotate(135deg);
+
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: 6px;
+          transform: translateY(6px) rotate(-95deg);
+        }
+      }
+
+      .hamburger, .hamburger::before {
+        height: 0.12rem;
+        width: 1.5rem;
+        background: black;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: solid thin cyan;
+      flex-grow: 1;
+      margin: 3em 1em;
+      width: 100%;
+      font-family: var(--font-family--primary);
+      font-weight: 700;
+      font-size: 1.6rem;
+
+      li {
+        padding: 1.4em 1em;
+        margin: 0 1em;
+        transition: all 0.05s ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  // social
+  .sidepane__nav__social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+
+    .social-links {
+      padding: 0.2em;
+
+      i {
+        padding: 1em 0.4em;
+        font-size: 1.2rem;
+        opacity: 1;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    span {
+      flex-grow: 1;
+      border: solid thin crimson;
+      height: 2px;
+      margin: 0.5em;
+    }
+
+    p {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
     }
   }
 

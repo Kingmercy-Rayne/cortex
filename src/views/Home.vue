@@ -67,6 +67,7 @@ export default {
   },
   mounted() {
     // use a query selector rather than a $ref due to lag issues
+    const customCursor = document.getElementById('customCursor');
     const heroImg = document.getElementById('hero-img');
     const foreword = document.getElementById('foreword');
     // dynamically set window dimensions on resize
@@ -77,9 +78,9 @@ export default {
       //  eslint-disable-next-line
       var hoverDistort = new hoverEffect({
         parent: heroImg,
-        intensity: 0.3,
+        intensity: 0.2,
         speedIn: 0.1,
-        speedOut: 0.2,
+        speedOut: 0.1,
         image1: this.hoverImg1,
         image2: this.hoverImg2,
         displacementImage: this.displacementImg,
@@ -87,11 +88,23 @@ export default {
         hover: this.isNotMobileScreen,
       });
 
+      function fireForewordTextEvent() {
+        customCursor.classList.add('cursor--grow');
+      }
+      function removeForewordTextEvent() {
+        customCursor.classList.remove('cursor--grow');
+      }
+      function fireHeroImgEvent() {
+        customCursor.classList.add('cursor--hide');
+      }
+      function removeHeroImgEvent() {
+        customCursor.classList.remove('cursor--hide');
+      }
       // MouseOver Effects
-      foreword.addEventListener('mouseover', this.fireForewordTextEvent);
-      foreword.addEventListener('mouseleave', this.removeForewordTextEvent);
-      heroImg.addEventListener('mouseover', this.fireHeroImgEvent);
-      heroImg.addEventListener('mouseleave', this.removeHeroImgEvent);
+      foreword.addEventListener('mouseover', fireForewordTextEvent());
+      foreword.addEventListener('mouseleave', removeForewordTextEvent());
+      heroImg.addEventListener('mouseover', fireHeroImgEvent());
+      heroImg.addEventListener('mouseleave', removeHeroImgEvent());
     });
 
     // edit dimensions of canvas
@@ -110,32 +123,15 @@ export default {
       console.log('width is', this.windowWidth);
       console.log('height is', this.windowHeight);
     },
-    fireForewordTextEvent() {
-      const customCursor = document.getElementById('customCursor');
-      customCursor.classList.add('cursor--grow');
-    },
-    removeForewordTextEvent() {
-      const customCursor = document.getElementById('customCursor');
-      customCursor.classList.remove('cursor--grow');
-    },
-    fireHeroImgEvent() {
-      const customCursor = document.getElementById('customCursor');
-      customCursor.classList.add('cursor--hide');
-    },
-    removeHeroImgEvent() {
-      const customCursor = document.getElementById('customCursor');
-      customCursor.classList.remove('cursor--hide');
-    },
   },
   beforeDestroy() {
-    const foreword = document.getElementById('foreword');
-    const heroImg = document.getElementById('hero-img');
-
-    window.removeEventListener('resize', this.screenResizeEvent);
-    foreword.removeEventListener('mouseover', this.fireForewordTextEvent);
-    foreword.removeEventListener('mouseleave', this.removeForewordTextEvent);
-    heroImg.removeEventListener('mouseover', this.fireHeroImgEvent);
-    heroImg.removeEventListener('mouseleave', this.removeHeroImgEvent);
+    // const foreword = document.getElementById('foreword');
+    // const heroImg = document.getElementById('hero-img');
+    // window.removeEventListener('resize', this.screenResizeEvent);
+    // foreword.removeEventListener('mouseover', this.fireForewordTextEvent);
+    // foreword.removeEventListener('mouseleave', this.removeForewordTextEvent);
+    // heroImg.removeEventListener('mouseover', this.fireHeroImgEvent);
+    // heroImg.removeEventListener('mouseleave', this.removeHeroImgEvent);
   },
 };
 </script>
@@ -170,11 +166,13 @@ export default {
       top: var(--margin-top);
       z-index: -5;
       width: 45%;
-      height: calc(98% - var(--margin-top));
+      height: calc(99% - var(--margin-top));
       overflow: hidden !important;
       object-fit: cover !important;
-      // border: solid thin purple;
+      padding: 0;
+      overflow: hidden;
 
+      // border: solid thin purple;
       @media screen and (max-width: 1000px) {
         width: 85%;
         right: 1em;
@@ -200,18 +198,18 @@ export default {
       color: var(--text-color--primary);
 
       @media screen and (max-width: 1100px) {
-        top: 7em;
+        top: 5em;
         width: 80%;
       }
 
       @media screen and (max-width: 800px) {
         width: 90%;
+        top: 6em;
         left: 1.5em;
       }
+
       @media screen and (max-width: 450px) {
-        top: 7em;
         width: 90%;
-        left: 1.5em;
       }
 
       // border: solid thin green;
@@ -231,11 +229,12 @@ export default {
 
         @media screen and (max-width: 800px) {
           font-size: 3.2rem;
-          letter-spacing:0.6rem;
-          word-break:1rem;
+          letter-spacing: 0.6rem;
+          word-break: 1rem;
         }
+
         @media screen and (max-width: 450px) {
-          letter-spacing:1px;
+          letter-spacing: 1px;
           font-size: 2.6rem;
         }
 
@@ -269,12 +268,18 @@ export default {
     .promotion-video__container {
       position: absolute;
       bottom: 2em;
+      left: 8em;
       display: flex;
       justify-content: space-around;
       min-width: 20%;
       align-items: center;
       padding: 1.5em 1em;
       font-family: var(--font-family-alt);
+
+      // border:solid thin cyan;
+      @media screen and (max-width: 800px) {
+        left: 1.5em;
+      }
 
       // border: solid thin green;
       .play-button {

@@ -55,9 +55,6 @@ export default {
       swiper.init();
     });
   },
-  beforeDestroy() {
-    this.$refs.swiperContainer.swiper.destroy();
-  },
 };
 </script>
 
