@@ -5,7 +5,7 @@
   --bg-color--primary: rgb(24, 21, 21);
   --bg-color--alt: rgb(20, 20, 17);
   --bg-color--tri: rgb(26, 27, 29);
-  --text-color--primary: #eee;
+  --text-color--primary: #fff;
   --text-color--alt: #e9204f;
   --text-color--tri: #777;
   --border-color--primary: #e9204f;
@@ -53,4 +53,9 @@ button {
 }
 button:hover {
   transform: scale(1.05);
+}
+@media screen and (max-width: 800px) {
+  button {
+    font-size: 0.8rem;
+  }
 }

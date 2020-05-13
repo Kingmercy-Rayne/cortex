@@ -23,7 +23,9 @@
       </div>
       <ul class="nav-links">
         <li v-for="(item, index) in links" :key="index">
-          <router-link :to="item.path">{{ item.name }}</router-link>
+          <router-link :to="item.path" @click.native="toggleSideNav">{{
+            item.name
+          }}</router-link>
         </li>
       </ul>
       <div class="sidepane__nav__social">
