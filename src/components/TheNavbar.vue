@@ -63,7 +63,7 @@ export default {
         },
         {
           name: 'Contact',
-          path: 'about',
+          path: 'contact',
         },
       ],
     };
