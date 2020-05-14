@@ -16,29 +16,32 @@
       <span class="hamburger"></span>
     </div>
     <!-- sidepane -->
-    <div :class="'sidepane__nav'" v-if="isSidepaneNavOpen">
-      <div class="sidepane__nav--toggle" @click="this.toggleSideNav">
-        <span class="hamburger"></span>
-        <span class="hamburger__text">Close</span>
-      </div>
-      <ul class="nav-links">
-        <li v-for="(item, index) in links" :key="index">
-          <router-link :to="item.path" @click.native="toggleSideNav">{{
-            item.name
-          }}</router-link>
-        </li>
-      </ul>
-      <div class="sidepane__nav__social">
-        <div class="social-links">
-          <i class="fas fa fa-instagram"></i>
-          <i class="fas fa fa-behance"></i>
-          <i class="fas fa fa-dribbble"></i>
-          <i class="fas fa fa-twitter"></i>
+    <transition name="fade">
+      <div :class="'sidepane__nav'" v-if="isSidepaneNavOpen">
+        <div class="sidepane__nav--toggle" @click="this.toggleSideNav">
+          <span class="hamburger"></span>
+          <span class="hamburger__text">Close</span>
         </div>
-        <span></span>
-        <p>Creative Agency</p>
+        <ul class="nav-links">
+          <li v-for="(item, index) in links" :key="index">
+            <router-link :to="item.path" @click.native="toggleSideNav">{{ item.name }}</router-link>
+          </li>
+        </ul>
+        <h2 class="brand-name">
+          <router-link :to="'/'">Cortex.</router-link>
+        </h2>
+        <div class="sidepane__nav__social">
+          <div class="social-links">
+            <i class="fas fa fa-instagram"></i>
+            <i class="fas fa fa-behance"></i>
+            <i class="fas fa fa-dribbble"></i>
+            <i class="fas fa fa-twitter"></i>
+          </div>
+          <span></span>
+          <p>Creative Agency</p>
+        </div>
       </div>
-    </div>
+    </transition>
     <!-- End of sidepane -->
   </nav>
 </template>
@@ -134,19 +137,18 @@ export default {
     .hamburger {
       position: relative;
       display: block;
-      background: white;
 
       &::before {
         content: '';
         position: absolute;
         bottom: 6px;
-        background: white;
       }
     }
 
     .hamburger, .hamburger::before {
       height: 0.1rem;
       width: 1.4rem;
+      background: var(--text-color--primary);
     }
 
     @media screen and (min-width: 800px) {
@@ -176,7 +178,6 @@ export default {
     background: rgba(237, 237, 237, 0.99);
     filter: brightness(85%);
     transition: all 2s ease-in-out;
-    // border: solid thin purple;
     color: black;
 
     .sidepane__nav--toggle {
@@ -212,17 +213,27 @@ export default {
       }
     }
 
+    .brand-name {
+      display: flex;
+      padding: 0 2em;
+      margin: 1.5em 0;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: var(--font-family--primary);
+    }
+
     .nav-links {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      border: solid thin cyan;
-      flex-grow: 1;
-      margin: 3em 1em;
+      flex-grow: 3;
+      margin: 2em 1em;
       width: 100%;
-      font-family: var(--font-family--primary);
-      font-weight: 700;
+      font-family: var(--font-family--alt);
+      font-weight: 600;
       font-size: 1.2rem;
 
       li {
@@ -276,6 +287,15 @@ export default {
 
   a {
     color: var(--text-color-primary);
+  }
+
+  // style sidepane__nav transition
+  .fade-enter-active, .fade-leave-active {
+    transition: transform 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .fade-enter, .fade-leave-to { /* .fade-leave-active below version 2.1.8 */
+    transform: translateY(-100%);
   }
 }
 </style>

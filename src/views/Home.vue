@@ -67,12 +67,11 @@ export default {
   },
   mounted() {
     // use a query selector rather than a $ref due to lag issues
-    const customCursor = document.getElementById('customCursor');
     const heroImg = document.getElementById('hero-img');
+    const customCursor = document.getElementById('customCursor');
     const foreword = document.getElementById('foreword');
     // dynamically set window dimensions on resize
     this.$nextTick(() => {
-      // track screen resize
       window.addEventListener('resize', this.screenResizeEvent);
       // disable eslint for hoverEffect init
       //  eslint-disable-next-line
@@ -88,32 +87,24 @@ export default {
         hover: this.isNotMobileScreen,
       });
 
-      function fireForewordTextEvent() {
-        customCursor.classList.add('cursor--grow');
-      }
-      function removeForewordTextEvent() {
-        customCursor.classList.remove('cursor--grow');
-      }
-      function fireHeroImgEvent() {
-        customCursor.classList.add('cursor--hide');
-      }
-      function removeHeroImgEvent() {
-        customCursor.classList.remove('cursor--hide');
-      }
       // MouseOver Effects
-      foreword.addEventListener('mouseover', fireForewordTextEvent());
-      foreword.addEventListener('mouseleave', removeForewordTextEvent());
-      heroImg.addEventListener('mouseover', fireHeroImgEvent());
-      heroImg.addEventListener('mouseleave', removeHeroImgEvent());
+      //  eslint-disable-next-line
+      foreword.addEventListener('mouseover', function fireForewordTextEvent() {
+        customCursor.classList.add('cursor--grow');
+      });
+      //  eslint-disable-next-line
+      foreword.addEventListener('mouseleave', function removeForewordTextEvent() {
+        customCursor.classList.remove('cursor--grow');
+      });
+      //  eslint-disable-next-line
+      heroImg.addEventListener('mouseover', function fireHeroImgEvent() {
+        customCursor.classList.add('cursor--hide');
+      });
+      //  eslint-disable-next-line
+      heroImg.addEventListener('mouseleave', function removeHeroImgEvent() {
+        customCursor.classList.remove('cursor--hide');
+      });
     });
-
-    // edit dimensions of canvas
-    // Whoops!! didnt work -->> TODO
-    // const heroImgWidth = heroImg.clientWidth;
-    // const heroImgHeight = heroImg.clientHeight;
-    // const canvas = heroImg.firstElementChild;
-    // canvas.width = heroImgWidth * 2;
-    // canvas.height = heroImgHeight * 2;
   },
   methods: {
     screenResizeEvent() {

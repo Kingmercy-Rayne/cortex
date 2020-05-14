@@ -16,16 +16,19 @@ export default {
   mounted() {
     this.$nextTick(() => {
       const customCursor = document.getElementById('customCursor');
+      // const heroImg = document.getElementById('hero-img');
+      // const foreword = document.getElementById('foreword');
 
+      // change VH varable
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+      // mouse cursor tracking
       //  eslint-disable-next-line
       window.addEventListener('mousemove', function fireCursorEvent(e) {
         customCursor.style.top = `${e.pageY}px`;
         customCursor.style.left = `${e.pageX}px`;
       });
-
-      // change VH
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
   },
   beforeDestroy() {
@@ -41,7 +44,7 @@ export default {
   font-family: 'Montserrat', 'Catamaran', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
   overflow-x: hidden;

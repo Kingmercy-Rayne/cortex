@@ -69,14 +69,22 @@ export default {
         },
         breakpoints: {
           // when window width is >= 320px
-          320: {
+          100: {
             slidesPerView: 2,
             spaceBetween: 15,
+            centeredSlides: true,
+            initialSlide: 1,
           },
           // when window width is >= 640px
           640: {
             slidesPerView: 3,
             spaceBetween: 30,
+          },
+          // when window width is >= 1000px
+          1000: {
+            spaceBetween: 20,
+            centeredSlides: false,
+            initialSlide: 0,
           },
           // when window width is >= 1900px
           1900: {
@@ -96,6 +104,7 @@ export default {
   background: var(--bg-color--primary);
   padding: 8em 0;
   overflow-x: hidden;
+  display: flex;
 
   .section__header {
     position: relative;
