@@ -1,5 +1,8 @@
 <template>
   <div class="intro-overlay">
+    <div class="overlay__bar"></div>
+    <div class="overlay__bar"></div>
+    <div class="overlay__bar"></div>
     <svg
       v-if="pageReady"
       class="intro-overlay__logo"
@@ -81,6 +84,28 @@ export default {
   justify-content: center;
   align-items: center;
   background: var(--bg-color--alt);
+
+  .overlay__bar {
+    position: absolute;
+    background: white;
+    top: 0;
+    // width: 33%;
+
+    &:nth-child(1) {
+      left: 0;
+      right:66%;
+    }
+
+    &:nth-child(2) {
+      left:33%;
+      right: 33%;
+    }
+
+    &:nth-child(3) {
+      width: 33%;
+      right: 0;
+    }
+  }
 
   .intro-overlay__logo path:nth-child(1) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray

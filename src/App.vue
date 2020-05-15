@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="cursor" id="customCursor" ref="customCursor"></div>
-    <intro-overlay />
+    <intro-overlay v-if="!isIntroComplete" />
     <the-navbar />
     <router-view />
   </div>
 </template>
 <script>
-// import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 import TheNavbar from './components/TheNavbar.vue';
 import introOverlay from './components/introOverlay.vue';
 
@@ -16,7 +16,16 @@ export default {
     introOverlay,
     TheNavbar,
   },
-
+  data() {
+    return {
+      isIntroComplete: false,
+    };
+  },
+  methods: {
+    setIntroComplete() {
+      this.isIntroComplete = !this.isIntroComplete;
+    },
+  },
   mounted() {
     this.$nextTick(() => {
       const customCursor = document.getElementById('customCursor');
@@ -35,13 +44,21 @@ export default {
       });
 
       // GSAP
-      // const tl = gsap.timeline();
-      // tl.to();
+      const tl = gsap.timeline();
+      tl.to('.overlay__bar', 1.6, {
+        height: '100%',
+        ease: 'power4.out',
+        delay: 3.5,
+        stagger: 0.3,
+      }).to('.intro-overlay', 0.4, {
+        scaleX: 0,
+        scaleY: 0,
+        opacity: 0,
+        rotation: 340,
+        ease: 'ease.power4',
+        onComplete: this.setIntroComplete,
+      });
     });
-  },
-  beforeDestroy() {
-    //  eslint-disable-next-line
-    window.removeEventListener('mousemove', fireCursorEvent);
   },
 };
 </script>
