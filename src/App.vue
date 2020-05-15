@@ -1,15 +1,19 @@
 <template>
   <div id="app">
     <div class="cursor" id="customCursor" ref="customCursor"></div>
+    <intro-overlay />
     <the-navbar />
     <router-view />
   </div>
 </template>
 <script>
+// import { gsap } from 'gsap';
 import TheNavbar from './components/TheNavbar.vue';
+import introOverlay from './components/introOverlay.vue';
 
 export default {
   components: {
+    introOverlay,
     TheNavbar,
   },
 
@@ -29,6 +33,10 @@ export default {
         customCursor.style.top = `${e.pageY}px`;
         customCursor.style.left = `${e.pageX}px`;
       });
+
+      // GSAP
+      // const tl = gsap.timeline();
+      // tl.to();
     });
   },
   beforeDestroy() {
