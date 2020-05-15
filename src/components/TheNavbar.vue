@@ -28,7 +28,7 @@
           </li>
         </ul>
         <h2 class="brand-name">
-          <router-link :to="'/'">Cortex.</router-link>
+          <router-link :to="'/'" @click.native="toggleSideNav">Cortex.</router-link>
         </h2>
         <div class="sidepane__nav__social">
           <div class="social-links">
@@ -178,6 +178,7 @@ export default {
     background: rgba(237, 237, 237, 0.99);
     filter: brightness(85%);
     transition: all 2s ease-in-out;
+    overflow: scroll;
     color: black;
 
     .sidepane__nav--toggle {
@@ -216,12 +217,13 @@ export default {
     .brand-name {
       display: flex;
       padding: 0 2em;
-      margin: 1.5em 0;
+      margin: 1em 0;
       justify-content: center;
       align-items: center;
       font-size: 2rem;
       font-weight: 800;
       font-family: var(--font-family--primary);
+      flex-grow: 3;
     }
 
     .nav-links {
@@ -229,8 +231,8 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-grow: 3;
-      margin: 2em 1em;
+      flex-grow: 4;
+      margin: 1em 1em;
       width: 100%;
       font-family: var(--font-family--alt);
       font-weight: 600;
