@@ -89,15 +89,15 @@ export default {
     position: absolute;
     background: white;
     top: 0;
-    // width: 33%;
 
+    // width: 33%;
     &:nth-child(1) {
       left: 0;
-      right:66%;
+      right: 66%;
     }
 
     &:nth-child(2) {
-      left:33%;
+      left: 33%;
       right: 33%;
     }
 
@@ -107,46 +107,50 @@ export default {
     }
   }
 
+  .intro-overlay__logo {
+    // display: none;
+  }
+
   .intro-overlay__logo path:nth-child(1) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 465px;
     stroke-dashoffset: 465px;
-    animation: overlay-logo-animation 4s ease forwards 3.3s;
+    animation: overlay-logo-animation 4s ease forwards 0.8s;
   }
 
   .intro-overlay__logo path:nth-child(2) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 595px;
     stroke-dashoffset: 595px;
-    animation: overlay-logo-animation 3s ease forwards 3.5s;
+    animation: overlay-logo-animation 3s ease forwards 1.4s;
   }
 
   .intro-overlay__logo path:nth-child(3) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 607px;
     stroke-dashoffset: 607px;
-    animation: overlay-logo-animation 3s ease forwards 3.6s;
+    animation: overlay-logo-animation 3s ease forwards 2.1s;
   }
 
   .intro-overlay__logo path:nth-child(4) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 364px;
     stroke-dashoffset: 364px;
-    animation: overlay-logo-animation 3s ease forwards 3.9s;
+    animation: overlay-logo-animation 3s ease forwards 3.2s;
   }
 
   .intro-overlay__logo path:nth-child(5) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 565px;
     stroke-dashoffset: 565px;
-    animation: overlay-logo-animation 2s ease forwards 4.1s;
+    animation: overlay-logo-animation 2s ease forwards 3.7s;
   }
 
   .intro-overlay__logo path:nth-child(6) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 510px;
     stroke-dashoffset: 510px;
-    animation: overlay-logo-animation 2s ease forwards 4.4s;
+    animation: overlay-logo-animation 2s ease forwards 3.7s;
   }
 
   @keyframes overlay-logo-animation {

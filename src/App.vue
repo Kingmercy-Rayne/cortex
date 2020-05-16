@@ -48,7 +48,7 @@ export default {
       tl.to('.overlay__bar', 1.6, {
         height: '100%',
         ease: 'power4.out',
-        delay: 3.5,
+        delay: 5,
         stagger: 0.3,
       }).to('.intro-overlay', 0.4, {
         scaleX: 0,

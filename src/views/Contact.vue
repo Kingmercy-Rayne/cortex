@@ -16,19 +16,31 @@
       <h5 class="telephone-no">+44 11 1234 1234</h5>
     </div>
     <div class="contact__hero-img">
-      <img src="../assets/img/andrew-power-EcPKajFZDfM-unsplash.png" alt="" />
+      <!-- <img src="../assets/img/andrew-power-EcPKajFZDfM-unsplash.png" alt="" /> -->
     </div>
     <pagination-mark />
   </section>
 </template>
 
 <script>
+import Map from '';
 import PaginationMark from '../components/PaginationMark.vue';
 
 export default {
   name: 'About',
+  data() {
+    return {
+      coordinates: '',
+    };
+  },
   components: {
     PaginationMark,
+  },
+  created() {
+    this.$getLocation({}).then((coordinates) => {
+      this.coordinates = coordinates;
+      console.log(this.coordinates);
+    }).catch(err => alert(err));
   },
 };
 </script>
@@ -94,7 +106,7 @@ export default {
   }
 
   .contact__hero-img {
-    // border: solid thin green;
+    border: solid thin green;
     width: 45%;
     position: absolute;
     right: 0.5em;
