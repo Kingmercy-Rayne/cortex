@@ -84,6 +84,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: var(--bg-color--alt);
+  border-radius: 1px;
 
   .overlay__bar {
     position: absolute;
@@ -108,7 +109,7 @@ export default {
   }
 
   .intro-overlay__logo {
-    // display: none;
+    display: block;
   }
 
   .intro-overlay__logo path:nth-child(1) {

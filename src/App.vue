@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <div class="cursor" id="customCursor" ref="customCursor"></div>
-    <intro-overlay v-if="!isIntroComplete" />
+    <!-- <intro-overlay v-if="!isIntroComplete" /> -->
+    <intro-overlay v-if="0" />
     <the-navbar />
     <router-view />
   </div>
 </template>
 <script>
 import { gsap } from 'gsap';
-import TheNavbar from './components/TheNavbar.vue';
-import introOverlay from './components/introOverlay.vue';
+import TheNavbar from '@/components/TheNavbar.vue';
+import introOverlay from '@/components/introOverlay.vue';
 
 export default {
   components: {
@@ -45,19 +46,34 @@ export default {
 
       // GSAP
       const tl = gsap.timeline();
-      tl.to('.overlay__bar', 1.6, {
+      tl.to('.overlay__bar', 1.4, {
         height: '100%',
         ease: 'power4.out',
         delay: 5,
         stagger: 0.3,
-      }).to('.intro-overlay', 0.4, {
-        scaleX: 0,
-        scaleY: 0,
-        opacity: 0,
-        rotation: 340,
-        ease: 'ease.power4',
-        onComplete: this.setIntroComplete,
-      });
+      })
+        .to('.intro-overlay', 0.4, {
+          // the negative scaleX value gives a whoosh effect to the sides
+          // adding a rotation value will create a diagonal effect
+          scaleX: -10,
+          scaleY: 0,
+          opacity: 0,
+          overflow: 'hidden',
+          border: '1px solid rgba(0,0,0,0)',
+          // borderRadius: '+=200%',
+          ease: 'ease.power4',
+          onComplete: this.setIntroComplete,
+        })
+        .to(
+          '.intro-overlay',
+          0.2,
+          {
+            // border radius in a separate tween so the box is rounded...
+            // before the rest of the effects take place
+            borderRadius: '+=50%',
+          },
+          '-=0.4',
+        );
     });
   },
 };

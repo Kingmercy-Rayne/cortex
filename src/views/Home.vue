@@ -1,5 +1,4 @@
-
-q<template>
+<template>
   <section class="page v-home">
     <div class="brand__wrapper">
       <div class="brand">

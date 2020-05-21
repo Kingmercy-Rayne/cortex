@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import Map from '';
-import PaginationMark from '../components/PaginationMark.vue';
+// import Map from '';
+import PaginationMark from '@/components/PaginationMark.vue';
 
 export default {
   name: 'About',
@@ -37,10 +37,12 @@ export default {
     PaginationMark,
   },
   created() {
-    this.$getLocation({}).then((coordinates) => {
-      this.coordinates = coordinates;
-      console.log(this.coordinates);
-    }).catch(err => alert(err));
+    this.$getLocation({})
+      .then((coordinates) => {
+        this.coordinates = coordinates;
+        console.log(this.coordinates);
+      })
+      .catch((err) => alert(err));
   },
 };
 </script>

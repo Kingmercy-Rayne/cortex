@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import PaginationMark from '../components/PaginationMark.vue';
+import PaginationMark from '@/components/PaginationMark.vue';
 
 export default {
   name: 'Services',
