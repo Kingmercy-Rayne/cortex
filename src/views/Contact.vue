@@ -2,7 +2,7 @@
   <section id="about" class="page">
     <div class="section__header">
       <span
-        ><h1>Contact.</h1>
+        ><h1>Contact. {{ this.bio }}</h1>
         <h6>Your next digital campaign is one discussion away</h6></span
       >
     </div>
@@ -15,8 +15,15 @@
       </div>
       <h5 class="telephone-no">+44 11 1234 1234</h5>
     </div>
-    <div class="contact__hero-img">
-      <!-- <img src="../assets/img/andrew-power-EcPKajFZDfM-unsplash.png" alt="" /> -->
+    <div class="map">
+      <l-map :zoom="13" :center="center" :options="mapOptions" style="height: 80%">
+        <l-tile-layer
+          :url="'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'"
+          :attribution="attribution"
+        />
+        <l-marker :lat-lng="withPopup"> </l-marker>
+        <l-marker :lat-lng="withTooltip"> </l-marker>
+      </l-map>
     </div>
     <pagination-mark />
   </section>
@@ -25,24 +32,52 @@
 <script>
 // import Map from '';
 import PaginationMark from '@/components/PaginationMark.vue';
+import latLng from 'leaflet';
+// eslint-disable-next-line
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
   name: 'About',
-  data() {
-    return {
-      coordinates: '',
-    };
-  },
+
   components: {
     PaginationMark,
+    LMap,
+    LTileLayer,
+    LMarker,
+    // LPopup,
+    // LTooltip,
   },
-  created() {
-    this.$getLocation({})
-      .then((coordinates) => {
-        this.coordinates = coordinates;
-        console.log(this.coordinates);
-      })
-      .catch((err) => alert(err));
+  data() {
+    return {
+      bio: 'qwerty',
+      zoom: 13,
+      center: latLng(47.41322, -1.219482),
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      withPopup: latLng(47.41322, -1.219482),
+      withTooltip: latLng(47.41422, -1.250482),
+      currentZoom: 11.5,
+      currentCenter: latLng(47.41322, -1.219482),
+      showParagraph: false,
+      mapOptions: {
+        zoomSnap: 0.5,
+      },
+      showMap: true,
+    };
+  },
+  methods: {
+    zoomUpdate(zoom) {
+      this.currentZoom = zoom;
+    },
+    centerUpdate(center) {
+      this.currentCenter = center;
+    },
+    showLongText() {
+      this.showParagraph = !this.showParagraph;
+    },
+    innerClick() {
+      alert('Click!');
+    },
   },
 };
 </script>
@@ -107,31 +142,21 @@ export default {
     }
   }
 
-  .contact__hero-img {
+  .map {
     border: solid thin green;
     width: 45%;
     position: absolute;
     right: 0.5em;
     bottom: 0;
+    z-index: 50000;
     height: calc(100% - 9vh);
 
-    @media screen and (max-width: 800px) {
-      width: 50%;
-    }
-
-    @media screen and (max-width: 600px) {
-      display: none;
-    }
-
-    @media screen and (min-width: 1900px) {
-      width: 60%;
-    }
-
     img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      filter: brightness(90%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
     }
   }
 

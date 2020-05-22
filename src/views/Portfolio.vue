@@ -9,18 +9,64 @@
         <router-link to="/portfolio/all">View All</router-link>
       </button>
     </div>
-    <portfolio-card />
+    <portfolio-card
+      v-for="(item, index) in portfolioItems"
+      :key="index"
+      :img="item.img"
+    ></portfolio-card>
     <pagination-mark />
   </section>
 </template>
 
 <script>
-// import '../assets/swiper/css/swiper.min.css';
 import PaginationMark from '@/components/PaginationMark.vue';
 import PortfolioCard from '@/components/PortfolioCard.vue';
+// import mapState from 'vuex';
 
 export default {
   name: 'Portfolio',
+  data() {
+    return {
+      portfolioItems: [
+        {
+          img: '@/assets/img/alex-iby-5cTvUcsrzLU-unsplash.jpg',
+          title: 'Shape the future',
+          date: 'May 15, 2018',
+          body: '',
+          category: '',
+          client: 'Anthesia.org',
+          skills: ['', '', ''],
+        },
+        {
+          img: '@/assets/img/noah-buscher-jm0npM4Gyic-unsplash.jpg',
+          title: 'Shape the future',
+          date: 'May 15, 2018',
+          body: '',
+          category: '',
+          client: 'Anthesia.org',
+          skills: ['', '', ''],
+        },
+        {
+          img: '@/assets/img/noah-buscher-1-kPytLsVkY-unsplash.jpg',
+          title: 'Shape the future',
+          date: 'May 15, 2018',
+          body: '',
+          category: '',
+          client: 'Anthesia.org',
+          skills: ['', '', ''],
+        },
+        {
+          img: '@/assets/img/james-francis-AFLiCZFVog4-unsplash.jpg',
+          title: 'Shape the future',
+          date: 'May 15, 2018',
+          body: '',
+          category: '',
+          client: 'Anthesia.org',
+          skills: ['', '', ''],
+        },
+      ],
+    };
+  },
   components: {
     PortfolioCard,
     PaginationMark,
@@ -90,6 +136,10 @@ export default {
     button {
       margin-left: auto;
     }
+  }
+
+  .portfolioItems {
+    width: 100%;
   }
 
   a {

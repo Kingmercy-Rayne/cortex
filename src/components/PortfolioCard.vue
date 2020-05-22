@@ -1,11 +1,14 @@
 <template>
   <article class="portfolio__card">
     <div class="portfolio__img">
-      <img src="../assets/img/alex-iby-5cTvUcsrzLU-unsplash.jpg" alt="" />
+      <img :src="img" alt="" />
     </div>
     <span class="divider"></span>
     <div class="portfolio__content">
-      <h1 class="portfolio__title">Retro Futuristic Car</h1>
+      <h1 class="portfolio__title">
+        <span>Retro Futuristic Car</span>
+        <i class="fas fa fa-external-link"></i>
+      </h1>
       <time class="portfolio__date">16 June, 2018</time>
       <p class="portfolio__text">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde deserunt eligendi et dolorem.
@@ -31,6 +34,7 @@
 <script>
 export default {
   name: 'PortfolioCard',
+  props: ['img', 'title', 'data', 'overview', 'category', 'client', 'technology'],
 };
 </script>
 
@@ -40,7 +44,9 @@ export default {
   min-height: 250px;
   display: flex;
   align-items: stretch;
+  margin: 2em 0;
   padding: 2em;
+  padding-right: 4em;
   padding-bottom: 4em;
   background: var(--bg-color--tri);
   overflow: hidden;
@@ -79,6 +85,17 @@ export default {
     .portfolio__title {
       font-size: 2rem;
       font-family: var(--font-family--primary);
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 3em;
+      }
+
+      i {
+        transform: scale(0.7);
+        color: var(--text-color--alt);
+      }
     }
 
     .portfolio__date {

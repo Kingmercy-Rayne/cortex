@@ -4,7 +4,8 @@
 :root {
   --bg-color--primary: rgb(24, 21, 21);
   --bg-color--alt: rgb(20, 20, 17);
-  --bg-color--tri: rgb(26, 27, 29);
+  /* --bg-color--tri: rgb(26, 27, 29); */
+  --bg-color--tri: rgb(23, 23, 24);
   --text-color--primary: #fff;
   --text-color--alt: #e9204f;
   --text-color--tri: #777;
