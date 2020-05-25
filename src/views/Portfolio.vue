@@ -9,18 +9,26 @@
         <router-link to="/portfolio/all">View All</router-link>
       </button>
     </div>
-    <portfolio-card
+    <portfolio-carousel />
+    <!-- <portfolio-card
       v-for="(item, index) in portfolioItems"
       :key="index"
       :img="item.img"
-    ></portfolio-card>
+      :title="item.title"
+      :date="item.date"
+      :body="item.body"
+      :category="item.category"
+      :client="item.client"
+      :technologies="item.technologies"
+    ></portfolio-card> -->
     <pagination-mark />
   </section>
 </template>
 
 <script>
 import PaginationMark from '@/components/PaginationMark.vue';
-import PortfolioCard from '@/components/PortfolioCard.vue';
+// import PortfolioCard from '@/components/PortfolioCard.vue';
+import PortfolioCarousel from '@/components/PortfolioCarousel.vue';
 // import mapState from 'vuex';
 
 export default {
@@ -29,46 +37,47 @@ export default {
     return {
       portfolioItems: [
         {
-          img: '@/assets/img/alex-iby-5cTvUcsrzLU-unsplash.jpg',
+          img: '"../assets/img/alex-iby-5cTvUcsrzLU-unsplash.jpg"',
           title: 'Shape the future',
           date: 'May 15, 2018',
           body: '',
-          category: '',
+          category: 'Branding',
           client: 'Anthesia.org',
-          skills: ['', '', ''],
+          technologies: ['Photoshop', 'SEO', 'Analytics'],
         },
         {
-          img: '@/assets/img/noah-buscher-jm0npM4Gyic-unsplash.jpg',
+          img: '"../assets/img/noah-buscher-jm0npM4Gyic-unsplash.jpg"',
           title: 'Shape the future',
           date: 'May 15, 2018',
           body: '',
           category: '',
           client: 'Anthesia.org',
-          skills: ['', '', ''],
+          technologies: ['Photoshop', 'SEO', 'Analytics'],
         },
         {
-          img: '@/assets/img/noah-buscher-1-kPytLsVkY-unsplash.jpg',
+          img: '"../assets/img/noah-buscher-1-kPytLsVkY-unsplash.jpg"',
           title: 'Shape the future',
           date: 'May 15, 2018',
           body: '',
           category: '',
           client: 'Anthesia.org',
-          skills: ['', '', ''],
+          technologies: ['Photoshop', 'SEO', 'Analytics'],
         },
         {
-          img: '@/assets/img/james-francis-AFLiCZFVog4-unsplash.jpg',
+          img: '"../assets/img/james-francis-AFLiCZFVog4-unsplash.jpg"active',
           title: 'Shape the future',
           date: 'May 15, 2018',
           body: '',
           category: '',
           client: 'Anthesia.org',
-          skills: ['', '', ''],
+          technologies: ['Photoshop', 'SEO', 'Analytics'],
         },
       ],
     };
   },
   components: {
-    PortfolioCard,
+    // PortfolioCard,
+    PortfolioCarousel,
     PaginationMark,
   },
 };

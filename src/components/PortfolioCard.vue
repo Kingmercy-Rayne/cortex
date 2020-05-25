@@ -2,14 +2,15 @@
   <article class="portfolio__card">
     <div class="portfolio__img">
       <img :src="img" alt="" />
+      <!-- {{img}} -->
     </div>
     <span class="divider"></span>
     <div class="portfolio__content">
       <h1 class="portfolio__title">
-        <span>Retro Futuristic Car</span>
+        <span>{{ title }}</span>
         <i class="fas fa fa-external-link"></i>
       </h1>
-      <time class="portfolio__date">16 June, 2018</time>
+      <time class="portfolio__date">{{ date }}</time>
       <p class="portfolio__text">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde deserunt eligendi et dolorem.
         Recusandae quibusdam illo alias inventore rerum ipsa iusto amet, quaerat odit distinctio sed
@@ -17,15 +18,15 @@
       </p>
       <div class="portfolio__tag">
         <span class="portfolio__tag__ref">Categories</span>
-        <span class="portfolio__tag__value">Illustration</span>
+        <span class="portfolio__tag__value">{{ category }}</span>
       </div>
       <div class="portfolio__tag">
         <span class="portfolio__tag__ref">Client</span>
-        <span class="portfolio__tag__value">Anthesia.org</span>
+        <span class="portfolio__tag__value">{{ client }}</span>
       </div>
       <div class="portfolio__tag">
-        <span class="portfolio__tag__ref">Service</span>
-        <span class="portfolio__tag__value">Branding, Website, Posters</span>
+        <span class="portfolio__tag__ref">Technologies</span>
+        <span class="portfolio__tag__value">{{ technologies }}</span>
       </div>
     </div>
   </article>
@@ -34,14 +35,15 @@
 <script>
 export default {
   name: 'PortfolioCard',
-  props: ['img', 'title', 'data', 'overview', 'category', 'client', 'technology'],
+  props: ['img', 'title', 'date', 'overview', 'category', 'client', 'technologies'],
 };
 </script>
 
 <style lang="stylus" scoped>
 .portfolio__card {
-  width: 100%;
+  width: 98%;
   min-height: 250px;
+  align-self: center;
   display: flex;
   align-items: stretch;
   margin: 2em 0;
@@ -49,6 +51,7 @@ export default {
   padding-right: 4em;
   padding-bottom: 4em;
   background: var(--bg-color--tri);
+  border-radius: 2em;
   overflow: hidden;
 
   .portfolio__img {
