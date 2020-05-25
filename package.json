@@ -46,7 +46,10 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "linebreak-style": "off"
+      "linebreak-style": "off",
+      "comma-dangle": [
+        1
+      ]
     }
   },
   "browserslist": [

@@ -123,35 +123,35 @@ export default {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 595px;
     stroke-dashoffset: 595px;
-    animation: overlay-logo-animation 3s ease forwards 1.4s;
+    animation: overlay-logo-animation 2s ease forwards 1s;
   }
 
   .intro-overlay__logo path:nth-child(3) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 607px;
     stroke-dashoffset: 607px;
-    animation: overlay-logo-animation 3s ease forwards 2.1s;
+    animation: overlay-logo-animation 2.8s ease forwards 2.1s;
   }
 
   .intro-overlay__logo path:nth-child(4) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 364px;
     stroke-dashoffset: 364px;
-    animation: overlay-logo-animation 3s ease forwards 3.2s;
+    animation: overlay-logo-animation 2.4s ease forwards 2.8s;
   }
 
   .intro-overlay__logo path:nth-child(5) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 565px;
     stroke-dashoffset: 565px;
-    animation: overlay-logo-animation 2s ease forwards 3.7s;
+    animation: overlay-logo-animation 2s ease forwards 3s;
   }
 
   .intro-overlay__logo path:nth-child(6) {
     // get length of SVGPathElement with JS and use as value for stroke-dasharray
     stroke-dasharray: 510px;
     stroke-dashoffset: 510px;
-    animation: overlay-logo-animation 2s ease forwards 3.7s;
+    animation: overlay-logo-animation 2s ease forwards 3.1s;
   }
 
   @keyframes overlay-logo-animation {

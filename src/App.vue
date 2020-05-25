@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <div class="cursor" id="customCursor" ref="customCursor"></div>
-    <!-- <intro-overlay v-if="!isIntroComplete" /> -->
-    <intro-overlay v-if="0" />
+    <intro-overlay v-if="!isIntroComplete" />
+    <!-- <intro-overlay v-if="0" /> -->
     <the-navbar />
-    <router-view />
+    <router-view v-if="isIntroComplete" />
+    <!-- <router-view/> -->
   </div>
 </template>
 <script>
@@ -20,11 +21,17 @@ export default {
   data() {
     return {
       isIntroComplete: false,
+      // hack is used so the image-load on the home view doesnt interrupt the intro animation
+      // refactor later to load introOverlay with GSAP
+      isContentReady: false,
     };
   },
   methods: {
     setIntroComplete() {
       this.isIntroComplete = !this.isIntroComplete;
+    },
+    loadMainContent() {
+      this.isContentReady = true;
     },
   },
   mounted() {
@@ -46,11 +53,12 @@ export default {
 
       // GSAP
       const tl = gsap.timeline();
-      tl.to('.overlay__bar', 1.4, {
+      tl.to('.overlay__bar', 1.2, {
         height: '100%',
         ease: 'power4.out',
-        delay: 5,
+        delay: 4,
         stagger: 0.3,
+        onComplete: this.loadMainContent,
       })
         .to('.intro-overlay', 0.4, {
           // the negative scaleX value gives a whoosh effect to the sides
@@ -72,7 +80,7 @@ export default {
             // before the rest of the effects take place
             borderRadius: '+=50%',
           },
-          '-=0.4',
+          '-=0.4'
         );
     });
   },
