@@ -4,7 +4,9 @@
     <intro-overlay v-if="!isIntroComplete" />
     <!-- <intro-overlay v-if="0" /> -->
     <the-navbar />
-    <router-view v-if="isIntroComplete" />
+    <transition name="router">
+      <router-view v-if="isIntroComplete" />
+    </transition>
     <!-- <router-view/> -->
   </div>
 </template>
@@ -143,5 +145,24 @@ export default {
   border: none;
   z-index: 20;
   backdrop-filter: grayscale();
+}
+
+.router-enter {
+  opacity: 0.5;
+}
+
+.router-enter-active {
+  transform: scale(0.9);
+  transition: all 0.4s ease-in-out;
+}
+
+@keyframes router-slide-up {
+  from {
+    transform: scaleY(0.8);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
 </style>
