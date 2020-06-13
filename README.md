@@ -14,6 +14,13 @@ Hover Effect.js
 
 ```
 
+## Screenshots
+
+![Landing Page](screenshots/home.png)
+![Portfolio Page](screenshots/portfolio.png)
+![Contact Page](screenshots/contact.png)
+![intro animation](screenshots/intro.png)
+
 ## Project setup
 
 ```
